@@ -113,18 +113,18 @@ export default function LegalPage() {
                   </div>
                 </CardHeader>
                 <CardContent className="prose max-w-none text-muted-foreground">
-                  <h3 className="text-white text-xl font-semibold mb-4">1. Information We Collect</h3>
+                  <h3 className="text-foreground text-xl font-semibold mb-4">1. Information We Collect</h3>
                   <p className="mb-4">
                     At EmberX, we collect information to provide you with the best location-based rewards experience:
                   </p>
                   <ul className="list-disc list-inside space-y-2 mb-6">
-                    <li><strong className="text-white">Location Data:</strong> We collect precise location information to show you nearby rewards and enable auto-collection features.</li>
-                    <li><strong className="text-white">Account Information:</strong> Email, name, and profile details you provide during signup.</li>
-                    <li><strong className="text-white">Usage Data:</strong> How you interact with the app, rewards collected, and preferences.</li>
-                    <li><strong className="text-white">Device Information:</strong> Device type, operating system, and app version for compatibility.</li>
+                    <li><strong className="text-foreground">Location Data:</strong> We collect precise location information to show you nearby rewards and enable auto-collection features.</li>
+                    <li><strong className="text-foreground">Account Information:</strong> Email, name, and profile details you provide during signup.</li>
+                    <li><strong className="text-foreground">Usage Data:</strong> How you interact with the app, rewards collected, and preferences.</li>
+                    <li><strong className="text-foreground">Device Information:</strong> Device type, operating system, and app version for compatibility.</li>
                   </ul>
 
-                  <h3 className="text-white text-xl font-semibold mb-4">2. How We Use Your Information</h3>
+                  <h3 className="text-foreground text-xl font-semibold mb-4">2. How We Use Your Information</h3>
                   <ul className="list-disc list-inside space-y-2 mb-6">
                     <li>Provide location-based reward discovery and collection</li>
                     <li>Personalize your experience and recommend relevant rewards</li>
@@ -134,30 +134,30 @@ export default function LegalPage() {
                     <li>Ensure platform security and prevent fraud</li>
                   </ul>
 
-                  <h3 className="text-white text-xl font-semibold mb-4">3. Information Sharing</h3>
+                  <h3 className="text-foreground text-xl font-semibold mb-4">3. Information Sharing</h3>
                   <p className="mb-4">
                     We respect your privacy and only share information in limited circumstances:
                   </p>
                   <ul className="list-disc list-inside space-y-2 mb-6">
-                    <li><strong className="text-white">With Partners:</strong> Anonymous, aggregated data to help brands understand campaign performance</li>
-                    <li><strong className="text-white">Service Providers:</strong> Trusted third parties who help us operate the platform</li>
-                    <li><strong className="text-white">Legal Requirements:</strong> When required by law or to protect our rights</li>
-                    <li><strong className="text-white">With Your Consent:</strong> Any other sharing requires your explicit permission</li>
+                    <li><strong className="text-foreground">With Partners:</strong> Anonymous, aggregated data to help brands understand campaign performance</li>
+                    <li><strong className="text-foreground">Service Providers:</strong> Trusted third parties who help us operate the platform</li>
+                    <li><strong className="text-foreground">Legal Requirements:</strong> When required by law or to protect our rights</li>
+                    <li><strong className="text-foreground">With Your Consent:</strong> Any other sharing requires your explicit permission</li>
                   </ul>
 
-                  <h3 className="text-white text-xl font-semibold mb-4">4. Your Privacy Controls</h3>
+                  <h3 className="text-foreground text-xl font-semibold mb-4">4. Your Privacy Controls</h3>
                   <p className="mb-4">
                     You have comprehensive control over your privacy:
                   </p>
                   <ul className="list-disc list-inside space-y-2 mb-6">
-                    <li><strong className="text-white">Location Sharing:</strong> Choose from fully public to completely anonymous profiles</li>
-                    <li><strong className="text-white">Notifications:</strong> Customize what notifications you receive</li>
-                    <li><strong className="text-white">Data Access:</strong> Request a copy of your personal data</li>
-                    <li><strong className="text-white">Data Deletion:</strong> Delete your account and associated data</li>
-                    <li><strong className="text-white">Brand Opt-out:</strong> Choose which brands can show you rewards</li>
+                    <li><strong className="text-foreground">Location Sharing:</strong> Choose from fully public to completely anonymous profiles</li>
+                    <li><strong className="text-foreground">Notifications:</strong> Customize what notifications you receive</li>
+                    <li><strong className="text-foreground">Data Access:</strong> Request a copy of your personal data</li>
+                    <li><strong className="text-foreground">Data Deletion:</strong> Delete your account and associated data</li>
+                    <li><strong className="text-foreground">Brand Opt-out:</strong> Choose which brands can show you rewards</li>
                   </ul>
 
-                  <h3 className="text-white text-xl font-semibold mb-4">5. Contact Us</h3>
+                  <h3 className="text-foreground text-xl font-semibold mb-4">5. Contact Us</h3>
                   <p>
                     Questions about this Privacy Policy? Contact us at privacy@emberx.com or through the app.
                   </p>
@@ -167,24 +167,24 @@ export default function LegalPage() {
 
             {/* Terms of Service */}
             <TabsContent value="terms">
-              <Card className="bg-gray-900 border-gray-700">
+              <Card className="bg-card border-border">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-white">
-                    <FileText className="w-5 h-5 text-[#FF6900]" />
+                  <CardTitle className="flex items-center gap-2 text-foreground">
+                    <FileText className="w-5 h-5 text-primary" />
                     Terms of Service
                   </CardTitle>
-                  <div className="flex items-center gap-2 text-sm text-gray-400">
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <Calendar className="w-4 h-4" />
                     Last updated: December 1, 2024
                   </div>
                 </CardHeader>
-                <CardContent className="prose prose-invert max-w-none text-gray-300">
-                  <h3 className="text-white text-xl font-semibold mb-4">1. Acceptance of Terms</h3>
+                <CardContent className="prose max-w-none text-muted-foreground">
+                  <h3 className="text-foreground text-xl font-semibold mb-4">1. Acceptance of Terms</h3>
                   <p className="mb-6">
                     By accessing or using EmberX, you agree to be bound by these Terms of Service. If you don't agree, please don't use our platform.
                   </p>
 
-                  <h3 className="text-white text-xl font-semibold mb-4">2. Description of Service</h3>
+                  <h3 className="text-foreground text-xl font-semibold mb-4">2. Description of Service</h3>
                   <p className="mb-4">
                     EmberX is a location-based rewards platform that connects users with businesses through digital rewards and tokens. Our services include:
                   </p>
@@ -196,7 +196,7 @@ export default function LegalPage() {
                     <li>Campaign management tools for businesses</li>
                   </ul>
 
-                  <h3 className="text-white text-xl font-semibold mb-4">3. User Accounts</h3>
+                  <h3 className="text-foreground text-xl font-semibold mb-4">3. User Accounts</h3>
                   <ul className="list-disc list-inside space-y-2 mb-6">
                     <li>You must be 13 or older to create an account</li>
                     <li>Provide accurate and complete information</li>
@@ -205,7 +205,7 @@ export default function LegalPage() {
                     <li>One account per person</li>
                   </ul>
 
-                  <h3 className="text-white text-xl font-semibold mb-4">4. EmberX Tokens</h3>
+                  <h3 className="text-foreground text-xl font-semibold mb-4">4. EmberX Tokens</h3>
                   <ul className="list-disc list-inside space-y-2 mb-6">
                     <li>EmberX tokens have no monetary value outside the platform</li>
                     <li>Tokens cannot be transferred between users</li>
@@ -213,7 +213,7 @@ export default function LegalPage() {
                     <li>Tokens are forfeited if your account is suspended</li>
                   </ul>
 
-                  <h3 className="text-white text-xl font-semibold mb-4">5. Contact Us</h3>
+                  <h3 className="text-foreground text-xl font-semibold mb-4">5. Contact Us</h3>
                   <p>
                     Questions about these terms? Contact us at legal@emberx.com.
                   </p>
@@ -223,19 +223,19 @@ export default function LegalPage() {
 
             {/* Business Terms */}
             <TabsContent value="business">
-              <Card className="bg-gray-900 border-gray-700">
+              <Card className="bg-card border-border">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-white">
-                    <Building2 className="w-5 h-5 text-[#FF6900]" />
+                  <CardTitle className="flex items-center gap-2 text-foreground">
+                    <Building2 className="w-5 h-5 text-primary" />
                     Business Terms
                   </CardTitle>
-                  <div className="flex items-center gap-2 text-sm text-gray-400">
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <Calendar className="w-4 h-4" />
                     Last updated: December 1, 2024
                   </div>
                 </CardHeader>
-                <CardContent className="prose prose-invert max-w-none text-gray-300">
-                  <h3 className="text-white text-xl font-semibold mb-4">1. Business Account Eligibility</h3>
+                <CardContent className="prose max-w-none text-muted-foreground">
+                  <h3 className="text-foreground text-xl font-semibold mb-4">1. Business Account Eligibility</h3>
                   <p className="mb-4">
                     To create a business account, you must:
                   </p>
@@ -246,7 +246,7 @@ export default function LegalPage() {
                     <li>Comply with local laws and regulations</li>
                   </ul>
 
-                  <h3 className="text-white text-xl font-semibold mb-4">2. Campaign Management</h3>
+                  <h3 className="text-foreground text-xl font-semibold mb-4">2. Campaign Management</h3>
                   <ul className="list-disc list-inside space-y-2 mb-6">
                     <li>You're responsible for campaign content and compliance</li>
                     <li>Campaigns must follow our content guidelines</li>
@@ -255,7 +255,7 @@ export default function LegalPage() {
                     <li>Campaign budgets are binding once approved</li>
                   </ul>
 
-                  <h3 className="text-white text-xl font-semibold mb-4">3. Fees and Payments</h3>
+                  <h3 className="text-foreground text-xl font-semibold mb-4">3. Fees and Payments</h3>
                   <ul className="list-disc list-inside space-y-2 mb-6">
                     <li>Campaign setup fees apply as outlined in your agreement</li>
                     <li>Performance fees are charged based on successful collections</li>
@@ -264,7 +264,7 @@ export default function LegalPage() {
                     <li>Late payments may result in account suspension</li>
                   </ul>
 
-                  <h3 className="text-white text-xl font-semibold mb-4">4. Data and Analytics</h3>
+                  <h3 className="text-foreground text-xl font-semibold mb-4">4. Data and Analytics</h3>
                   <ul className="list-disc list-inside space-y-2 mb-6">
                     <li>You receive aggregated, anonymized user data</li>
                     <li>Individual user data is not shared without consent</li>
@@ -277,26 +277,26 @@ export default function LegalPage() {
 
             {/* Cookie Policy */}
             <TabsContent value="cookies">
-              <Card className="bg-gray-900 border-gray-700">
+              <Card className="bg-card border-border">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-white">
-                    <Cookie className="w-5 h-5 text-[#FF6900]" />
+                  <CardTitle className="flex items-center gap-2 text-foreground">
+                    <Cookie className="w-5 h-5 text-primary" />
                     Cookie Policy
                   </CardTitle>
-                  <div className="flex items-center gap-2 text-sm text-gray-400">
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <Calendar className="w-4 h-4" />
                     Last updated: December 1, 2024
                   </div>
                 </CardHeader>
-                <CardContent className="prose prose-invert max-w-none text-gray-300">
-                  <h3 className="text-white text-xl font-semibold mb-4">1. What Are Cookies</h3>
+                <CardContent className="prose max-w-none text-muted-foreground">
+                  <h3 className="text-foreground text-xl font-semibold mb-4">1. What Are Cookies</h3>
                   <p className="mb-6">
                     Cookies are small text files stored on your device when you visit our website. They help us provide a better experience and understand how you use our platform.
                   </p>
 
-                  <h3 className="text-white text-xl font-semibold mb-4">2. Types of Cookies We Use</h3>
+                  <h3 className="text-foreground text-xl font-semibold mb-4">2. Types of Cookies We Use</h3>
                   
-                  <h4 className="text-white text-lg font-semibold mb-3">Essential Cookies</h4>
+                  <h4 className="text-foreground text-lg font-semibold mb-3">Essential Cookies</h4>
                   <p className="mb-3">Required for the platform to function properly:</p>
                   <ul className="list-disc list-inside space-y-2 mb-6">
                     <li>Authentication and session management</li>
@@ -304,7 +304,7 @@ export default function LegalPage() {
                     <li>Load balancing and performance</li>
                   </ul>
 
-                  <h4 className="text-white text-lg font-semibold mb-3">Analytics Cookies</h4>
+                  <h4 className="text-foreground text-lg font-semibold mb-3">Analytics Cookies</h4>
                   <p className="mb-3">Help us understand how users interact with our platform:</p>
                   <ul className="list-disc list-inside space-y-2 mb-6">
                     <li>Page views and user journeys</li>
@@ -312,17 +312,17 @@ export default function LegalPage() {
                     <li>Error tracking and debugging</li>
                   </ul>
 
-                  <h3 className="text-white text-xl font-semibold mb-4">3. Managing Cookies</h3>
+                  <h3 className="text-foreground text-xl font-semibold mb-4">3. Managing Cookies</h3>
                   <p className="mb-4">
                     You can control cookies through:
                   </p>
                   <ul className="list-disc list-inside space-y-2 mb-6">
-                    <li><strong className="text-white">Browser Settings:</strong> Most browsers allow you to block or delete cookies</li>
-                    <li><strong className="text-white">App Preferences:</strong> Manage cookie preferences in your account settings</li>
-                    <li><strong className="text-white">Opt-out Tools:</strong> Use industry opt-out tools for marketing cookies</li>
+                    <li><strong className="text-foreground">Browser Settings:</strong> Most browsers allow you to block or delete cookies</li>
+                    <li><strong className="text-foreground">App Preferences:</strong> Manage cookie preferences in your account settings</li>
+                    <li><strong className="text-foreground">Opt-out Tools:</strong> Use industry opt-out tools for marketing cookies</li>
                   </ul>
 
-                  <h3 className="text-white text-xl font-semibold mb-4">4. Contact Information</h3>
+                  <h3 className="text-foreground text-xl font-semibold mb-4">4. Contact Information</h3>
                   <p>
                     Questions about our use of cookies? Contact us at privacy@emberx.com.
                   </p>
@@ -332,25 +332,25 @@ export default function LegalPage() {
           </Tabs>
 
           {/* Contact Section */}
-          <Card className="mt-8 bg-gray-900 border-gray-700">
+          <Card className="mt-8 bg-card border-border">
             <CardContent className="p-6 text-center">
-              <Mail className="w-8 h-8 text-[#FF6900] mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-white mb-2">
+              <Mail className="w-8 h-8 text-primary mx-auto mb-4" />
+              <h3 className="text-lg font-semibold text-foreground mb-2">
                 Have Questions About Our Policies?
               </h3>
-              <p className="text-gray-400 mb-4">
+              <p className="text-muted-foreground mb-4">
                 Our legal team is here to help clarify any questions about our terms, privacy practices, or business policies.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <a 
                   href="mailto:legal@emberx.com"
-                  className="bg-[#FF6900] hover:bg-[#E55A00] text-white px-6 py-2 rounded-lg transition-colors"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2 rounded-lg transition-colors"
                 >
                   Contact Legal Team
                 </a>
                 <a 
                   href="mailto:privacy@emberx.com"
-                  className="border border-[#FF6900] text-[#FF6900] hover:bg-[#FF6900] hover:text-white px-6 py-2 rounded-lg transition-colors"
+                  className="border border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 py-2 rounded-lg transition-colors"
                 >
                   Privacy Questions
                 </a>

@@ -130,7 +130,7 @@ export default function AboutPage() {
             </div>
             <div className="relative h-80 rounded-2xl overflow-hidden">
               <ImageWithFallback 
-                src="https://images.unsplash.com/photo-1758426637762-192afd85b92a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBjaXR5JTIwc2t5bGluZSUyMHRlY2hub2xvZ3l8ZW58MXx8fHwxNzU5ODI0MjgwfDA&ixlib=rb-4.1.0&q=80&w=1080"
+                src="/imgs/bg.png"
                 alt="Modern city skyline representing our vision"
                 className="w-full h-full"
               />

@@ -298,7 +298,7 @@ export default function HomePage() {
             
             <div className="relative h-96 rounded-2xl overflow-hidden">
               <ImageWithFallback 
-                src="/public/imgs/bg.png"
+                src="/imgs/bg.png"
                 alt="Business team collaboration"
                 className="w-full h-full"
               />
