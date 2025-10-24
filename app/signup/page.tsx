@@ -78,7 +78,7 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8">
+    <div className="min-h-screen bg-background text-foreground grid-lines flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5"></div>
       
@@ -90,12 +90,12 @@ export default function SignUpPage() {
               <Zap className="w-8 h-8 sm:w-10 sm:h-10 text-primary-foreground" />
             </div>
           </Link>
-          <h1 className="text-foreground text-2xl sm:text-3xl font-bold">Join EmberX</h1>
+          <h1 className="text-foreground text-2xl sm:text-3xl font-bold text-neon">Join EmberX</h1>
           <p className="text-muted-foreground mt-1">Start earning rewards today</p>
         </div>
 
         {/* Signup Form */}
-        <Card className="bg-card/50 border-border shadow-xl">
+        <Card className="glass neon-glow">
           <CardHeader>
             <CardTitle className="text-center text-foreground">Create Your Account</CardTitle>
           </CardHeader>
@@ -116,7 +116,7 @@ export default function SignUpPage() {
                       setUsername(value);
                     }}
                     placeholder="@yourusername"
-                    className="h-11 sm:h-12 bg-background border-input"
+                    className="h-11 sm:h-12 bg-input/40 border-input hover:border-border/60 focus-visible:border-primary focus-visible:ring-primary/40 focus-visible:ring-[4px]"
                     disabled={isLoading}
                   />
                 </div>
@@ -129,7 +129,7 @@ export default function SignUpPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
-                    className="h-11 sm:h-12 bg-background border-input"
+                    className="h-11 sm:h-12 bg-input/40 border-input hover:border-border/60 focus-visible:border-primary focus-visible:ring-primary/40 focus-visible:ring-[4px]"
                     disabled={isLoading}
                   />
                 </div>
@@ -142,7 +142,7 @@ export default function SignUpPage() {
                     value={mobile}
                     onChange={(e) => setMobile(e.target.value)}
                     placeholder="Enter your mobile number"
-                    className="h-11 sm:h-12 bg-background border-input"
+                    className="h-11 sm:h-12 bg-input/40 border-input hover:border-border/60 focus-visible:border-primary focus-visible:ring-primary/40 focus-visible:ring-[4px]"
                     disabled={isLoading}
                   />
                 </div>
@@ -156,7 +156,7 @@ export default function SignUpPage() {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="Create a password"
-                      className="h-11 sm:h-12 pr-10 bg-background border-input"
+                      className="h-11 sm:h-12 pr-10 bg-input/40 border-input hover:border-border/60 focus-visible:border-primary focus-visible:ring-primary/40 focus-visible:ring-[4px]"
                       disabled={isLoading}
                     />
                     <button
@@ -197,7 +197,7 @@ export default function SignUpPage() {
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       placeholder="Confirm your password"
-                      className="h-11 sm:h-12 pr-10 bg-background border-input"
+                      className="h-11 sm:h-12 pr-10 bg-input/40 border-input hover:border-border/60 focus-visible:border-primary focus-visible:ring-primary/40 focus-visible:ring-[4px]"
                       disabled={isLoading}
                     />
                     <button
@@ -259,7 +259,7 @@ export default function SignUpPage() {
 
                 <Button
                   type="submit"
-                  className="w-full h-11 sm:h-12 bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50"
+                  className="w-full h-11 sm:h-12 bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50 neon-glow"
                   disabled={isLoading}
                 >
                   {isLoading ? (

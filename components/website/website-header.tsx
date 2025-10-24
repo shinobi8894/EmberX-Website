@@ -19,7 +19,7 @@ export function WebsiteHeader() {
   ];
 
   return (
-    <header className="bg-background border-b border-border sticky top-0 z-50 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 divider-smooth-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -36,10 +36,10 @@ export function WebsiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`px-3 py-2 text-sm font-medium transition-colors ${
+                className={`relative px-3 py-2 text-sm font-medium transition-colors ${
                   pathname === item.href
-                    ? 'text-primary border-b-2 border-primary'
-                    : 'text-muted-foreground hover:text-primary'
+                    ? 'text-foreground after:absolute after:left-3 after:right-3 after:-bottom-0.5 after:h-0.5 after:bg-primary after:content-[""]'
+                    : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
                 {item.label}
@@ -53,7 +53,7 @@ export function WebsiteHeader() {
             <Link href="/signin">
               <Button
                 variant="outline"
-                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200"
+                className="transition-all duration-200"
               >
                 Sign In
               </Button>
@@ -102,7 +102,7 @@ export function WebsiteHeader() {
                 <Link href="/signin" onClick={() => setIsMenuOpen(false)}>
                   <Button
                     variant="outline"
-                    className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                    className="w-full"
                   >
                     Sign In
                   </Button>
