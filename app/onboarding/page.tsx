@@ -37,7 +37,7 @@ export default function OnboardingPage() {
       setCurrentStep(currentStep + 1);
     } else {
       // Redirect to coming soon page after onboarding
-      window.location.href = '/coming-soon';
+      window.location.href = '/brand';
     }
   };
 
@@ -48,7 +48,7 @@ export default function OnboardingPage() {
   };
 
   const skipOnboarding = () => {
-    window.location.href = '/coming-soon';
+    window.location.href = '/brand';
   };
 
   const step = onboardingSteps[currentStep];

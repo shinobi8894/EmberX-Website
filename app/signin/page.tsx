@@ -33,7 +33,7 @@ export default function SignInPage() {
       // Demo credentials check
       if (email === 'demo@emberx.com' && password === 'demo123') {
         // Redirect to coming soon or dashboard
-        window.location.href = '/coming-soon';
+        window.location.href = '/onboarding';
       } else {
         setError('Invalid email or password');
       }
