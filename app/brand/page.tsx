@@ -193,10 +193,10 @@ function BrandDashboard({ brandName }: BrandDashboardProps) {
     <div className="p-6 space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Welcome back to {brandName}</h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">Here's an overview of your EmberX campaigns</p>
+          <h1 className="text-3xl font-bold text-foreground">Welcome back to {brandName}</h1>
+          <p className="text-muted-foreground mt-2">Here's an overview of your EmberX campaigns</p>
         </div>
-        <Button className="bg-[#FF6900] hover:bg-[#E55A00] text-white">
+        <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
           <Plus className="w-4 h-4 mr-2" />
           New Campaign
         </Button>
@@ -277,12 +277,12 @@ function BrandDashboard({ brandName }: BrandDashboardProps) {
             <div key={campaign.id} className="border rounded-lg p-4 space-y-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <h3 className="font-semibold text-gray-900 dark:text-white">{campaign.name}</h3>
+                  <h3 className="font-semibold text-foreground">{campaign.name}</h3>
                   <Badge variant={campaign.status === "active" ? "default" : "secondary"} className={campaign.status === "active" ? "bg-green-100 text-green-800" : ""}>
                     {campaign.status}
                   </Badge>
                 </div>
-                <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+                <div className="flex items-center gap-4 text-sm text-muted-foreground">
                   <div className="flex items-center gap-1">
                     <MapPin className="w-4 h-4" /> {campaign.locations} locations
                   </div>
@@ -292,39 +292,39 @@ function BrandDashboard({ brandName }: BrandDashboardProps) {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-muted rounded-lg">
                 <div className="text-center">
                   <div className="flex items-center justify-center gap-1 mb-1">
                     <Eye className="w-4 h-4 text-blue-500" />
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Views</p>
+                    <p className="text-sm text-muted-foreground">Views</p>
                   </div>
-                  <p className="text-lg font-semibold text-gray-900 dark:text-white">{campaign.analytics.basic.views.toLocaleString()}</p>
+                  <p className="text-lg font-semibold text-foreground">{campaign.analytics.basic.views.toLocaleString()}</p>
                 </div>
                 <div className="text-center">
                   <div className="flex items-center justify-center gap-1 mb-1">
                     <Target className="w-4 h-4 text-green-500" />
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Collections</p>
+                    <p className="text-sm text-muted-foreground">Collections</p>
                   </div>
-                  <p className="text-lg font-semibold text-gray-900 dark:text-white">{campaign.analytics.basic.collections}</p>
+                  <p className="text-lg font-semibold text-foreground">{campaign.analytics.basic.collections}</p>
                 </div>
                 <div className="text-center">
                   <div className="flex items-center justify-center gap-1 mb-1">
                     <TrendingUp className="w-4 h-4 text-purple-500" />
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Conversion</p>
+                    <p className="text-sm text-muted-foreground">Conversion</p>
                   </div>
-                  <p className="text-lg font-semibold text-gray-900 dark:text-white">{campaign.analytics.basic.conversionRate}%</p>
+                  <p className="text-lg font-semibold text-foreground">{campaign.analytics.basic.conversionRate}%</p>
                 </div>
                 <div className="text-center">
                   <div className="flex items-center justify-center gap-1 mb-1">
                     <Clock className="w-4 h-4 text-orange-500" />
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Avg. Time</p>
+                    <p className="text-sm text-muted-foreground">Avg. Time</p>
                   </div>
-                  <p className="text-lg font-semibold text-gray-900 dark:text-white">{campaign.analytics.basic.avgTimeToCollect}</p>
+                  <p className="text-lg font-semibold text-foreground">{campaign.analytics.basic.avgTimeToCollect}</p>
                 </div>
               </div>
 
               <div className="p-4 border rounded-lg">
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Budget Progress</p>
+                <p className="text-sm text-muted-foreground mb-2">Budget Progress</p>
                 <Progress value={(campaign.spent / campaign.budget) * 100} className="mb-2" />
                 <div className="flex justify-between text-xs text-gray-500">
                   <span>${campaign.spent.toLocaleString()} spent</span>
@@ -336,14 +336,14 @@ function BrandDashboard({ brandName }: BrandDashboardProps) {
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 mb-3">
                     <Crown className="w-4 h-4 text-yellow-500" />
-                    <h4 className="font-medium text-gray-900 dark:text-white">Detailed Insights</h4>
+                    <h4 className="font-medium text-foreground">Detailed Insights</h4>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="p-4 border rounded-lg">
-                      <h5 className="font-medium text-gray-900 dark:text-white mb-3">Demographics</h5>
+                      <h5 className="font-medium text-foreground mb-3">Demographics</h5>
                       <div className="space-y-2">
                         <div>
-                          <p className="text-xs text-gray-600 dark:text-gray-400">Age Groups</p>
+                          <p className="text-xs text-muted-foreground">Age Groups</p>
                           <div className="grid grid-cols-2 gap-1 text-xs mt-1">
                             {Object.entries(campaign.analytics.detailed.demographics.ageGroups).map(([age, percent]) => (
                               <div key={age} className="flex justify-between">
@@ -354,7 +354,7 @@ function BrandDashboard({ brandName }: BrandDashboardProps) {
                           </div>
                         </div>
                         <div>
-                          <p className="text-xs text-gray-600 dark:text-gray-400">Gender Split</p>
+                          <p className="text-xs text-muted-foreground">Gender Split</p>
                           <div className="flex justify-between text-xs mt-1">
                             <span>M: {campaign.analytics.detailed.demographics.genderSplit.male}%</span>
                             <span>F: {campaign.analytics.detailed.demographics.genderSplit.female}%</span>
@@ -363,31 +363,31 @@ function BrandDashboard({ brandName }: BrandDashboardProps) {
                       </div>
                     </div>
                     <div className="p-4 border rounded-lg">
-                      <h5 className="font-medium text-gray-900 dark:text-white mb-3">Foot Flow</h5>
+                      <h5 className="font-medium text-foreground mb-3">Foot Flow</h5>
                       <div className="space-y-2">
                         <div>
-                          <p className="text-xs text-gray-600 dark:text-gray-400">Peak Hours</p>
+                          <p className="text-xs text-muted-foreground">Peak Hours</p>
                           <div className="text-xs mt-1">{campaign.analytics.detailed.footFlow.peakHours.join(", ")}</div>
                         </div>
                         <div>
-                          <p className="text-xs text-gray-600 dark:text-gray-400">Avg. Dwell Time</p>
-                          <p className="text-sm font-medium text-gray-900 dark:text-white">{campaign.analytics.detailed.footFlow.avgDwellTime}</p>
+                          <p className="text-xs text-muted-foreground">Avg. Dwell Time</p>
+                          <p className="text-sm font-medium text-foreground">{campaign.analytics.detailed.footFlow.avgDwellTime}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-gray-600 dark:text-gray-400">Return Rate</p>
-                          <p className="text-sm font-medium text-gray-900 dark:text-white">{campaign.analytics.detailed.footFlow.returnVisitRate}%</p>
+                          <p className="text-xs text-muted-foreground">Return Rate</p>
+                          <p className="text-sm font-medium text-foreground">{campaign.analytics.detailed.footFlow.returnVisitRate}%</p>
                         </div>
                       </div>
                     </div>
                     <div className="p-4 border rounded-lg">
-                      <h5 className="font-medium text-gray-900 dark:text-white mb-3">Device Split</h5>
+                      <h5 className="font-medium text-foreground mb-3">Device Split</h5>
                       <div className="space-y-2">
                         <div className="flex justify-between text-sm">
-                          <span className="text-gray-600 dark:text-gray-400">iOS:</span>
+                          <span className="text-muted-foreground">iOS:</span>
                           <span className="font-medium">{campaign.analytics.detailed.deviceData.ios}%</span>
                         </div>
                         <div className="flex justify-between text-sm">
-                          <span className="text-gray-600 dark:text-gray-400">Android:</span>
+                          <span className="text-muted-foreground">Android:</span>
                           <span className="font-medium">{campaign.analytics.detailed.deviceData.android}%</span>
                         </div>
                         <Progress value={campaign.analytics.detailed.deviceData.ios} className="mt-2" />
@@ -396,11 +396,11 @@ function BrandDashboard({ brandName }: BrandDashboardProps) {
                   </div>
                 </div>
               ) : (
-                <div className="p-6 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg text-center">
-                  <Lock className="w-8 h-8 mx-auto mb-3 text-gray-400" />
-                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Detailed Analytics</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">Unlock demographics, foot flow patterns, and device insights</p>
-                  <Button size="sm" className="bg-[#FF6900] hover:bg-[#E55A00] text-white">
+                <div className="p-6 border-2 border-dashed border-border rounded-lg text-center">
+                  <Lock className="w-8 h-8 mx-auto mb-3 text-muted-foreground" />
+                  <h4 className="font-medium text-foreground mb-2">Detailed Analytics</h4>
+                  <p className="text-sm text-muted-foreground mb-4">Unlock demographics, foot flow patterns, and device insights</p>
+                  <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground">
                     <Crown className="w-4 h-4 mr-2" /> Upgrade to Premium
                   </Button>
                 </div>
@@ -410,46 +410,46 @@ function BrandDashboard({ brandName }: BrandDashboardProps) {
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 mb-3">
                     <Zap className="w-4 h-4 text-blue-500" />
-                    <h4 className="font-medium text-gray-900 dark:text-white">Enhanced Intelligence</h4>
+                    <h4 className="font-medium text-foreground">Enhanced Intelligence</h4>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="p-4 border rounded-lg bg-blue-50 dark:bg-blue-900/20">
-                      <h5 className="font-medium text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                      <h5 className="font-medium text-foreground mb-3 flex items-center gap-2">
                         <ShoppingBag className="w-4 h-4" /> Purchase Behavior
                       </h5>
                       <div className="space-y-2">
                         <div>
-                          <p className="text-xs text-gray-600 dark:text-gray-400">Post-Collection Spend</p>
+                          <p className="text-xs text-muted-foreground">Post-Collection Spend</p>
                           <p className="text-lg font-semibold text-blue-600 dark:text-blue-400">{campaign.analytics.enhanced.purchaseBehavior.postCollectionSpend}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-gray-600 dark:text-gray-400">Loyalty Impact</p>
+                          <p className="text-xs text-muted-foreground">Loyalty Impact</p>
                           <p className="text-sm font-medium text-green-600 dark:text-green-400">{campaign.analytics.enhanced.purchaseBehavior.loyaltyImpact}</p>
                         </div>
                       </div>
                     </div>
                     <div className="p-4 border rounded-lg bg-green-50 dark:bg-green-900/20">
-                      <h5 className="font-medium text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                      <h5 className="font-medium text-foreground mb-3 flex items-center gap-2">
                         <Navigation className="w-4 h-4" /> Location Intelligence
                       </h5>
                       <div className="space-y-2">
                         <div>
-                          <p className="text-xs text-gray-600 dark:text-gray-400">Competitor Analysis</p>
-                          <p className="text-xs text-gray-700 dark:text-gray-300">{campaign.analytics.enhanced.locationIntelligence.competitorAnalysis}</p>
+                          <p className="text-xs text-muted-foreground">Competitor Analysis</p>
+                          <p className="text-xs text-foreground">{campaign.analytics.enhanced.locationIntelligence.competitorAnalysis}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-gray-600 dark:text-gray-400">Optimization</p>
+                          <p className="text-xs text-muted-foreground">Optimization</p>
                           <p className="text-xs font-medium text-green-600 dark:text-green-400">{campaign.analytics.enhanced.locationIntelligence.optimalPlacement}</p>
                         </div>
                       </div>
                     </div>
                     <div className="p-4 border rounded-lg bg-purple-50 dark:bg-purple-900/20">
-                      <h5 className="font-medium text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                      <h5 className="font-medium text-foreground mb-3 flex items-center gap-2">
                         <Activity className="w-4 h-4" /> Real-Time Insights
                       </h5>
                       <div className="space-y-2">
                         <div>
-                          <p className="text-xs text-gray-600 dark:text-gray-400">Current Activity</p>
+                          <p className="text-xs text-muted-foreground">Current Activity</p>
                           <Badge variant="outline" className={
                             campaign.analytics.enhanced.realTimeInsights.currentActivity === "High"
                               ? "border-green-500 text-green-600"
@@ -461,12 +461,12 @@ function BrandDashboard({ brandName }: BrandDashboardProps) {
                           </Badge>
                         </div>
                         <div>
-                          <p className="text-xs text-gray-600 dark:text-gray-400">Predictions</p>
+                          <p className="text-xs text-muted-foreground">Predictions</p>
                           <p className="text-xs font-medium text-purple-600 dark:text-purple-400">{campaign.analytics.enhanced.realTimeInsights.predictedCollections}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-gray-600 dark:text-gray-400">Weather Impact</p>
-                          <p className="text-xs text-gray-700 dark:text-gray-300">{campaign.analytics.enhanced.realTimeInsights.weatherImpact}</p>
+                          <p className="text-xs text-muted-foreground">Weather Impact</p>
+                          <p className="text-xs text-foreground">{campaign.analytics.enhanced.realTimeInsights.weatherImpact}</p>
                         </div>
                       </div>
                     </div>
@@ -475,18 +475,18 @@ function BrandDashboard({ brandName }: BrandDashboardProps) {
               ) : analyticsTier === "detailed" ? (
                 <div className="p-6 border-2 border-dashed border-blue-300 dark:border-blue-600 rounded-lg text-center">
                   <Zap className="w-8 h-8 mx-auto mb-3 text-blue-400" />
-                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Enhanced Intelligence</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">Unlock purchase behavior, location intelligence, and real-time predictions</p>
+                  <h4 className="font-medium text-foreground mb-2">Enhanced Intelligence</h4>
+                  <p className="text-sm text-muted-foreground mb-4">Unlock purchase behavior, location intelligence, and real-time predictions</p>
                   <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
                     <Zap className="w-4 h-4 mr-2" /> Upgrade to Pro
                   </Button>
                 </div>
               ) : (
-                <div className="p-6 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg text-center">
-                  <Zap className="w-8 h-8 mx-auto mb-3 text-gray-400" />
-                  <h4 className="font-medium text-gray-900 dark:text-white mb-2">Enhanced Intelligence</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">Advanced analytics with AI-powered insights and real-time predictions</p>
-                  <Button size="sm" disabled className="bg-gray-400 text-white cursor-not-allowed">
+                <div className="p-6 border-2 border-dashed border-border rounded-lg text-center">
+                  <Zap className="w-8 h-8 mx-auto mb-3 text-muted-foreground" />
+                  <h4 className="font-medium text-foreground mb-2">Enhanced Intelligence</h4>
+                  <p className="text-sm text-muted-foreground mb-4">Advanced analytics with AI-powered insights and real-time predictions</p>
+                  <Button size="sm" disabled className="bg-muted text-muted-foreground cursor-not-allowed">
                     <Lock className="w-4 h-4 mr-2" /> Requires Premium & Pro
                   </Button>
                 </div>
@@ -499,23 +499,23 @@ function BrandDashboard({ brandName }: BrandDashboardProps) {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Card className="cursor-pointer hover:shadow-md transition-shadow">
           <CardContent className="p-6 text-center">
-            <Plus className="w-8 h-8 mx-auto mb-3 text-[#FF6900]" />
-            <h3 className="font-semibold text-gray-900 dark:text-white">Create Campaign</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Set up a new reward campaign</p>
+            <Plus className="w-8 h-8 mx-auto mb-3 text-primary" />
+            <h3 className="font-semibold text-foreground">Create Campaign</h3>
+            <p className="text-sm text-muted-foreground mt-1">Set up a new reward campaign</p>
           </CardContent>
         </Card>
         <Card className="cursor-pointer hover:shadow-md transition-shadow">
           <CardContent className="p-6 text-center">
-            <BarChart3 className="w-8 h-8 mx-auto mb-3 text-[#FF6900]" />
-            <h3 className="font-semibold text-gray-900 dark:text-white">View Analytics</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Detailed performance metrics</p>
+            <BarChart3 className="w-8 h-8 mx-auto mb-3 text-primary" />
+            <h3 className="font-semibold text-foreground">View Analytics</h3>
+            <p className="text-sm text-muted-foreground mt-1">Detailed performance metrics</p>
           </CardContent>
         </Card>
         <Card className="cursor-pointer hover:shadow-md transition-shadow">
           <CardContent className="p-6 text-center">
-            <MapPin className="w-8 h-8 mx-auto mb-3 text-[#FF6900]" />
-            <h3 className="font-semibold text-gray-900 dark:text-white">Manage Locations</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Add or edit drop locations</p>
+            <MapPin className="w-8 h-8 mx-auto mb-3 text-primary" />
+            <h3 className="font-semibold text-foreground">Manage Locations</h3>
+            <p className="text-sm text-muted-foreground mt-1">Add or edit drop locations</p>
           </CardContent>
         </Card>
       </div>

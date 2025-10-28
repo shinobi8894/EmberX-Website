@@ -60,8 +60,8 @@ function BrandAnalytics({ brandName }: BrandAnalyticsProps) {
     <div className="p-6 space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Analytics Dashboard</h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">Detailed insights into your {brandName} campaigns</p>
+          <h1 className="text-3xl font-bold text-foreground">Analytics Dashboard</h1>
+          <p className="text-muted-foreground mt-2">Detailed insights into your {brandName} campaigns</p>
         </div>
         <div className="flex items-center gap-4">
           <Select value={timeRange} onValueChange={setTimeRange}>

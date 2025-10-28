@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LayoutDashboard, Megaphone, BarChart3, Settings, User, LogOut } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export function BrandSidebar({ brandName = "Starbucks" }: { brandName?: string }) {
   const pathname = usePathname();
@@ -12,16 +13,17 @@ export function BrandSidebar({ brandName = "Starbucks" }: { brandName?: string }
   ];
 
   return (
-    <div className="w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col">
-      <div className="p-6 border-b border-gray-200 dark:border-gray-700">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-[#FF6900] rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-lg">E</span>
+    <div className="w-64 bg-card border-r border-border flex flex-col">
+      <div className="p-6 border-b border-border">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+            <span className="text-primary-foreground font-bold text-lg">E</span>
           </div>
-          <div>
-            <h1 className="font-bold text-lg text-gray-900 dark:text-white">EmberX</h1>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Brand Console</p>
+          <div className="flex-1">
+            <h1 className="font-bold text-lg text-foreground">EmberX</h1>
+            <p className="text-sm text-muted-foreground">Brand Console</p>
           </div>
+          <ThemeToggle />
         </div>
       </div>
       <nav className="flex-1 p-4">
@@ -35,8 +37,8 @@ export function BrandSidebar({ brandName = "Starbucks" }: { brandName?: string }
                 href={item.href}
                 className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left transition-colors ${
                   active
-                    ? "bg-[#FF6900] text-white"
-                    : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    ? "bg-primary text-primary-foreground"
+                    : "text-foreground hover:bg-accent hover:text-accent-foreground"
                 }`}
               >
                 <Icon className="w-5 h-5" />
@@ -46,16 +48,16 @@ export function BrandSidebar({ brandName = "Starbucks" }: { brandName?: string }
           })}
         </div>
       </nav>
-      <div className="p-4 border-t border-gray-200 dark:border-gray-700">
-        <div className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 dark:bg-gray-700">
+      <div className="p-4 border-t border-border">
+        <div className="flex items-center gap-3 p-3 rounded-lg bg-muted">
           <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
             <User className="w-4 h-4 text-white" />
           </div>
           <div className="flex-1">
-            <p className="font-medium text-gray-900 dark:text-white">{brandName}</p>
-            <p className="text-xs text-gray-500 dark:text-gray-400">Brand Manager</p>
+            <p className="font-medium text-foreground">{brandName}</p>
+            <p className="text-xs text-muted-foreground">Brand Manager</p>
           </div>
-          <button className="p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-600">
+          <button className="p-1 rounded hover:bg-accent">
             <LogOut className="w-4 h-4" />
           </button>
         </div>

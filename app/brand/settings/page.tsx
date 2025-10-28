@@ -178,10 +178,10 @@ function BrandSettings({ brandName }: { brandName: string }) {
     <div className="p-6 space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Brand Settings</h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">Manage your {brandName} account and preferences</p>
+          <h1 className="text-3xl font-bold text-foreground">Brand Settings</h1>
+          <p className="text-muted-foreground mt-2">Manage your {brandName} account and preferences</p>
         </div>
-        <Button onClick={handleSave} className="bg-[#FF6900] hover:bg-[#E55A00] text-white">
+        <Button onClick={handleSave} className="bg-primary hover:bg-primary/90 text-primary-foreground">
           <Save className="w-4 h-4 mr-2" /> Save Changes
         </Button>
       </div>
@@ -208,7 +208,7 @@ function BrandSettings({ brandName }: { brandName: string }) {
                         </DialogTitle>
                       </DialogHeader>
                       <Tabs defaultValue="suggestions" className="w-full">
-                        <TabsList className="grid w-full grid-cols-2 bg-gray-800/30 border border-white/20">
+                        <TabsList className="grid w-full grid-cols-2">
                           <TabsTrigger value="suggestions" className="text-gray-300 data-[state=active]:bg-[#FF6900]/20 data-[state=active]:text-[#FF6900] hover:text-white transition-colors">Smart Suggestions</TabsTrigger>
                           <TabsTrigger value="insights" className="text-gray-300 data-[state=active]:bg-[#FF6900]/20 data-[state=active]:text-[#FF6900] hover:text-white transition-colors">Performance Insights</TabsTrigger>
                         </TabsList>
@@ -224,11 +224,11 @@ function BrandSettings({ brandName }: { brandName: string }) {
                               <CardContent className="p-4">
                                 <div className="flex items-start justify-between">
                                   <div className="flex-1">
-                                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">{s.title}</h4>
-                                    <p className="text-gray-600 dark:text-gray-400 mb-3">{s.description}</p>
+                                    <h4 className="font-semibold text-foreground mb-2">{s.title}</h4>
+                                    <p className="text-muted-foreground mb-3">{s.description}</p>
                                     <Badge variant="outline" className="text-green-600 border-green-600">{s.impact}</Badge>
                                   </div>
-                                  <Button onClick={() => applyAiSuggestion(s)} className="bg-[#FF6900] hover:bg-[#E55A00] text-white ml-4">Apply</Button>
+                                  <Button onClick={() => applyAiSuggestion(s)} className="bg-primary hover:bg-primary/90 text-primary-foreground ml-4">Apply</Button>
                                 </div>
                               </CardContent>
                             </Card>
@@ -279,7 +279,7 @@ function BrandSettings({ brandName }: { brandName: string }) {
                   </Dialog>
                   <Dialog open={showRewardModal} onOpenChange={setShowRewardModal}>
                     <DialogTrigger asChild>
-                      <Button size="sm" className="bg-[#FF6900] hover:bg-[#E55A00] gap-2">
+                      <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2">
                         <Plus className="w-4 h-4" /> Add Reward
                       </Button>
                     </DialogTrigger>
@@ -344,7 +344,7 @@ function BrandSettings({ brandName }: { brandName: string }) {
                           <Input value={newReward.description} onChange={(e) => setNewReward({ ...newReward, description: e.target.value })} placeholder="Brief description of the reward" className="mt-1" />
                         </div>
                         <div className="flex gap-2 pt-4">
-                          <Button onClick={editingReward ? handleUpdateReward : handleAddReward} className="bg-[#FF6900] hover:bg-[#E55A00] text-white">
+                          <Button onClick={editingReward ? handleUpdateReward : handleAddReward} className="bg-primary hover:bg-primary/90 text-primary-foreground">
                             {editingReward ? "Update Reward" : "Create Reward"}
                           </Button>
                           <Button variant="outline" onClick={() => { setShowRewardModal(false); setEditingReward(null); }}>Cancel</Button>
@@ -363,10 +363,10 @@ function BrandSettings({ brandName }: { brandName: string }) {
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-2">
-                            <h4 className="font-semibold text-gray-900 dark:text-white">{reward.name}</h4>
+                            <h4 className="font-semibold text-foreground">{reward.name}</h4>
                             <Badge variant={reward.status === "active" ? "default" : "secondary"}>{reward.status}</Badge>
                           </div>
-                          <p className="text-gray-600 dark:text-gray-400 mb-3">{reward.description}</p>
+                          <p className="text-muted-foreground mb-3">{reward.description}</p>
                           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                             <div>
                               <span className="text-gray-500">Value:</span>
@@ -456,7 +456,7 @@ function BrandSettings({ brandName }: { brandName: string }) {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="font-medium">Auto-approve campaigns</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Automatically approve campaigns under default budget</p>
+                  <p className="text-sm text-muted-foreground">Automatically approve campaigns under default budget</p>
                 </div>
                 <Switch checked={preferences.autoApprove} onCheckedChange={(checked) => setPreferences({ ...preferences, autoApprove: checked })} />
               </div>
@@ -475,7 +475,7 @@ function BrandSettings({ brandName }: { brandName: string }) {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="font-medium">Require approval for high-budget campaigns</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Manual approval required for campaigns over $5,000</p>
+                  <p className="text-sm text-muted-foreground">Manual approval required for campaigns over $5,000</p>
                 </div>
                 <Switch checked={preferences.requireApproval} onCheckedChange={(checked) => setPreferences({ ...preferences, requireApproval: checked })} />
               </div>
@@ -492,35 +492,35 @@ function BrandSettings({ brandName }: { brandName: string }) {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="font-medium">Campaign alerts</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Get notified when campaigns start, pause, or end</p>
+                  <p className="text-sm text-muted-foreground">Get notified when campaigns start, pause, or end</p>
                 </div>
                 <Switch checked={notifications.campaignAlerts} onCheckedChange={(checked) => setNotifications({ ...notifications, campaignAlerts: checked })} />
               </div>
               <div className="flex items-center justify-between">
                 <div>
                   <p className="font-medium">Low budget warnings</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Alert when campaign budget reaches 80%</p>
+                  <p className="text-sm text-muted-foreground">Alert when campaign budget reaches 80%</p>
                 </div>
                 <Switch checked={notifications.lowBudgetWarnings} onCheckedChange={(checked) => setNotifications({ ...notifications, lowBudgetWarnings: checked })} />
               </div>
               <div className="flex items-center justify-between">
                 <div>
                   <p className="font-medium">Weekly reports</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Receive weekly performance summaries</p>
+                  <p className="text-sm text-muted-foreground">Receive weekly performance summaries</p>
                 </div>
                 <Switch checked={notifications.weeklyReports} onCheckedChange={(checked) => setNotifications({ ...notifications, weeklyReports: checked })} />
               </div>
               <div className="flex items-center justify-between">
                 <div>
                   <p className="font-medium">Monthly analytics</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Detailed monthly analytics reports</p>
+                  <p className="text-sm text-muted-foreground">Detailed monthly analytics reports</p>
                 </div>
                 <Switch checked={notifications.monthlyAnalytics} onCheckedChange={(checked) => setNotifications({ ...notifications, monthlyAnalytics: checked })} />
               </div>
               <div className="flex items-center justify-between">
                 <div>
                   <p className="font-medium">System updates</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Platform updates and new features</p>
+                  <p className="text-sm text-muted-foreground">Platform updates and new features</p>
                 </div>
                 <Switch checked={notifications.systemUpdates} onCheckedChange={(checked) => setNotifications({ ...notifications, systemUpdates: checked })} />
               </div>
@@ -584,19 +584,19 @@ function BrandSettings({ brandName }: { brandName: string }) {
             </CardHeader>
             <CardContent className="space-y-3">
               <div>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Current Plan</p>
+                <p className="text-sm text-muted-foreground">Current Plan</p>
                 <p className="font-semibold">{billing.currentPlan}</p>
               </div>
               <div>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Monthly Spend</p>
+                <p className="text-sm text-muted-foreground">Monthly Spend</p>
                 <p className="font-semibold">${billing.monthlySpend.toLocaleString()}</p>
               </div>
               <div>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Payment Method</p>
+                <p className="text-sm text-muted-foreground">Payment Method</p>
                 <p className="font-semibold">{billing.paymentMethod}</p>
               </div>
               <div>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Next Billing</p>
+                <p className="text-sm text-muted-foreground">Next Billing</p>
                 <p className="font-semibold">{billing.nextBilling}</p>
               </div>
               <Button variant="outline" className="w-full">Manage Billing</Button>
@@ -627,7 +627,7 @@ function BrandSettings({ brandName }: { brandName: string }) {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">Contact our support team for assistance with your campaigns.</p>
+              <p className="text-sm text-muted-foreground mb-3">Contact our support team for assistance with your campaigns.</p>
               <Button variant="outline" className="w-full">Contact Support</Button>
             </CardContent>
           </Card>
