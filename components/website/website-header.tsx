@@ -4,63 +4,94 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { ThemeToggle } from '@/components/theme-toggle';
-import { Menu, X, Zap } from 'lucide-react';
+import { Menu, X, Download } from 'lucide-react';
 
 export function WebsiteHeader() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  const navigation = [
-    { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' },
-    { label: 'Download', href: '/coming-soon' },
-    { label: 'Legal', href: '/legal' }
-  ];
+  const isActive = (path: string) => pathname === path;
+  
+  // Determine text colors based on page background
+  const isLightTextPage = pathname === '/about' || pathname === '/legal';
+  const textColor = isLightTextPage ? 'text-white' : 'text-zinc-900 dark:text-white';
+  const navTextColor = isLightTextPage ? 'text-white/70 hover:text-white' : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white';
+  const mobileIconColor = isLightTextPage ? 'text-white/70 hover:text-white' : 'text-zinc-900 dark:text-white';
 
   return (
-    <header className="sticky top-0 z-50 divider-smooth-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <header className="absolute top-0 left-0 right-0 z-50">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center mr-3">
-              <Zap className="w-4 h-4 text-primary-foreground" />
+          <Link 
+            href="/"
+            className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+          >
+            <div className="w-10 h-10 bg-gradient-to-br from-[#FF6900] to-[#FF8533] rounded-xl flex items-center justify-center">
+              <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
             </div>
-            <span className="text-xl font-bold text-foreground">EmberX</span>
+            <span className={`text-2xl font-bold ${textColor}`}>EmberX</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`relative px-3 py-2 text-sm font-medium transition-colors ${
-                  pathname === item.href
-                    ? 'text-foreground after:absolute after:left-3 after:right-3 after:-bottom-0.5 after:h-0.5 after:bg-primary after:content-[""]'
-                    : 'text-muted-foreground hover:text-foreground'
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
+          <nav className="hidden md:flex items-center gap-8">
+            <Link 
+              href="/"
+              className={`font-medium transition-colors ${
+                isActive('/') 
+                  ? 'text-[#FF6900]' 
+                  : navTextColor
+              }`}
+            >
+              Home
+            </Link>
+            <Link 
+              href="/about"
+              className={`font-medium transition-colors ${
+                isActive('/about') 
+                  ? 'text-[#FF6900]' 
+                  : navTextColor
+              }`}
+            >
+              About
+            </Link>
+            <Link 
+              href="/legal"
+              className={`font-medium transition-colors ${
+                isActive('/legal') 
+                  ? 'text-[#FF6900]' 
+                  : navTextColor
+              }`}
+            >
+              Legal
+            </Link>
+            <Link 
+              href="/coming-soon"
+              className={`font-medium transition-colors ${
+                isActive('/coming-soon') 
+                  ? 'text-[#FF6900]' 
+                  : navTextColor
+              }`}
+            >
+              Download
+            </Link>
           </nav>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center space-x-4">
-            <ThemeToggle />
+          {/* Desktop Auth Buttons */}
+          <div className="hidden md:flex items-center gap-4">
             <Link href="/signin">
-              <Button
-                variant="outline"
-                className="transition-all duration-200"
+              <Button 
+                variant="ghost" 
+                className={`${navTextColor} font-medium`}
               >
-                Sign In
+                Sign in
               </Button>
             </Link>
             <Link href="/signup">
-              <Button
-                className="bg-primary hover:bg-primary/90 text-primary-foreground"
+              <Button 
+                className="bg-gradient-to-r from-[#FF6900] to-[#FF8533] hover:from-[#E55A00] hover:to-[#E57529] text-white rounded-full px-6 shadow-lg font-medium"
               >
                 Get Started
               </Button>
@@ -68,48 +99,75 @@ export function WebsiteHeader() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          <button 
+            className={`md:hidden p-2 ${mobileIconColor}`}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {isMenuOpen ? (
-              <X className="w-6 h-6 text-muted-foreground" />
-            ) : (
-              <Menu className="w-6 h-6 text-muted-foreground" />
-            )}
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
-            <nav className="flex flex-col space-y-4">
-              {navigation.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`text-left px-3 py-2 text-sm font-medium transition-colors ${
-                    pathname === item.href
-                      ? 'text-primary'
-                      : 'text-muted-foreground hover:text-primary'
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <div className="flex flex-col space-y-2 pt-4">
-                <Link href="/signin" onClick={() => setIsMenuOpen(false)}>
-                  <Button
-                    variant="outline"
-                    className="w-full"
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden py-6 border-t border-white/10 bg-black/95 backdrop-blur-xl rounded-b-2xl">
+            <nav className="flex flex-col gap-4">
+              <Link 
+                href="/"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`text-left font-medium py-2 transition-colors ${
+                  isActive('/') 
+                    ? 'text-[#FF6900]' 
+                    : 'text-white/70 hover:text-white'
+                }`}
+              >
+                Home
+              </Link>
+              <Link 
+                href="/about"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`text-left font-medium py-2 transition-colors ${
+                  isActive('/about') 
+                    ? 'text-[#FF6900]' 
+                    : 'text-white/70 hover:text-white'
+                }`}
+              >
+                About
+              </Link>
+              <Link 
+                href="/legal"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`text-left font-medium py-2 transition-colors ${
+                  isActive('/legal') 
+                    ? 'text-[#FF6900]' 
+                    : 'text-white/70 hover:text-white'
+                }`}
+              >
+                Legal
+              </Link>
+              <Link 
+                href="/coming-soon"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`text-left font-medium py-2 transition-colors flex items-center gap-2 ${
+                  isActive('/coming-soon') 
+                    ? 'text-[#FF6900]' 
+                    : 'text-white/70 hover:text-white'
+                }`}
+              >
+                <Download className="w-4 h-4" />
+                Download
+              </Link>
+              <div className="flex flex-col gap-3 pt-4 border-t border-white/20">
+                <Link href="/signin" onClick={() => setMobileMenuOpen(false)}>
+                  <Button 
+                    variant="outline" 
+                    className="w-full border-2 border-white/20 text-white hover:bg-white/10"
                   >
-                    Sign In
+                    Sign in
                   </Button>
                 </Link>
-                <Link href="/signup" onClick={() => setIsMenuOpen(false)}>
-                  <Button
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                <Link href="/signup" onClick={() => setMobileMenuOpen(false)}>
+                  <Button 
+                    className="w-full bg-gradient-to-r from-[#FF6900] to-[#FF8533] hover:from-[#E55A00] hover:to-[#E57529] text-white"
                   >
                     Get Started
                   </Button>
