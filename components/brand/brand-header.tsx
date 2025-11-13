@@ -1,7 +1,7 @@
 "use client";
 import { usePathname } from "next/navigation";
 import { Bell, Search } from "lucide-react";
-import { BRAND_NAV_ITEMS } from '../../constants';
+import { BRAND_NAV_ITEMS, BRAND_HEADER } from '../../constants';
 
 export function BrandHeader() {
   const pathname = usePathname();
@@ -11,9 +11,9 @@ export function BrandHeader() {
     <div className="h-20 bg-card shadow-sm flex items-center justify-between px-8 border-b border-border">
       <div>
         <h2 className="text-2xl font-bold text-foreground">
-          {currentPage?.label || "Dashboard"}
+          {currentPage?.label || BRAND_HEADER.defaultTitle}
         </h2>
-        <p className="text-sm text-muted-foreground">Manage your EmberX campaigns</p>
+        <p className="text-sm text-muted-foreground">{BRAND_HEADER.subtitle}</p>
       </div>
 
       <div className="flex items-center gap-4">
@@ -21,7 +21,7 @@ export function BrandHeader() {
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <input
             type="search"
-            placeholder="Search..."
+            placeholder={BRAND_HEADER.searchPlaceholder}
             className="w-80 h-11 pl-10 pr-4 bg-muted border-0 rounded-xl text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-[#FF6900] outline-none"
           />
         </div>

@@ -2,8 +2,12 @@ import { Target, Users, Shield, Zap } from 'lucide-react';
 
 export const ABOUT_HERO = {
   badge: 'About EmberX',
-  title: 'Revolutionizing Rewards Through Innovation',
-  subtitle: 'We\'re building the future of location-based rewards, connecting millions of users with thousands of brands through cutting-edge technology.',
+  titleLine1: 'revolutionizing',
+  titleLine2: 'rewards',
+  subtitle: 'To create the world\'s first incentive operating system which rewards loyalty and turns everyday actions into value. We believe technology should bring businesses and users value with minimal change. We build bridges between businesses and consumers providing rewards which impact ROI and create loyalty and trust between business and consumers. ',
+  images: {
+    hero: 'https://images.unsplash.com/photo-1611416370495-50fac9e1b382?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaXR5JTIwbmlnaHQlMjB1cmJhbnxlbnwxfHx8fDE3NjIzOTg3Njl8MA&ixlib=rb-4.1.0&q=80&w=1080',
+  },
 };
 
 export const ABOUT_VALUES = [
@@ -85,4 +89,92 @@ export const ABOUT_CTA = {
     primary: 'Get Started',
     secondary: 'For Businesses',
   },
+};
+
+// Mobile App Section
+export const ABOUT_MOBILE_SECTION = {
+  badge: 'The Experience',
+  title: {
+    line1: 'Discover',
+    line2: 'and Uncover Rewards',
+    line3: 'everywhere',
+  },
+  subtitle: 'The download Now button should lead them to the apple or android store to download EmberX',
+  ctaText: 'Download Now',
+  ctaLink: '/coming-soon',
+};
+
+// Values Section
+export const ABOUT_VALUES_SECTION = {
+  title: {
+    line1: 'our',
+    line2: 'values',
+  },
+  subtitle: 'The principles that guide everything we do',
+};
+
+// Mission Section
+export const ABOUT_MISSION_SECTION = {
+  badge: 'Our Mission',
+  title: {
+    line1: 'bringing',
+    line2: 'communities',
+    line3: 'together',
+  },
+  content: [
+    'To create a world where discovering and supporting local businesses is effortless, rewarding, and meaningful. We believe that technology should bring people closer to their communities, not further apart.',
+    'Through EmberX, we\'re building bridges between businesses and customers, creating win-win relationships that benefit entire communities.',
+  ],
+  ctaText: 'Join Our Mission',
+  image: 'https://images.unsplash.com/photo-1690378820474-b468b8ee64d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWFtJTIwY29sbGFib3JhdGlvbiUyMG9mZmljZXxlbnwxfHx8fDE3NjIzNjUzMjN8MA&ixlib=rb-4.1.0&q=80&w=1080',
+};
+
+// Journey Section
+export const ABOUT_JOURNEY_SECTION = {
+  title: {
+    line1: 'our',
+    line2: 'journey',
+  },
+  subtitle: 'Building the future, one milestone at a time',
+  milestones: [
+    {
+      year: '2025',
+      title: 'Founded',
+      description: 'EmberX was born',
+      stat: 'Day 1',
+    },
+    {
+      year: '2026',
+      title: 'Explosive Growth',
+      description: '500+ cities worldwide',
+      stat: '500+',
+    },
+    {
+      year: '2027',
+      title: 'Growth',
+      description: 'First million users',
+      stat: '1M+',
+    },
+    {
+      year: '2028',
+      title: 'Impact',
+      description: 'Rewards distributed',
+      stat: '$10M+',
+    },
+  ],
+};
+
+// Final CTA Section
+export const ABOUT_FINAL_CTA = {
+  badge: 'Join Us',
+  title: {
+    line1: 'ready to be',
+    line2: 'part of the future?',
+  },
+  subtitle: 'Join millions of users and thousands of brands building the future of location-based rewards',
+  cta: {
+    primary: 'Get Started Today',
+    secondary: 'Contact Our Team',
+  },
+  image: 'https://images.unsplash.com/photo-1519662978799-2f05096d3636?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBhcmNoaXRlY3R1cmV8ZW58MXx8fHwxNzYyMzg4NDk2fDA&ixlib=rb-4.1.0&q=80&w=1080',
 };

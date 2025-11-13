@@ -4,36 +4,14 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { MapPin, Wallet, Gift, Shield, Zap } from 'lucide-react';
-
-const onboardingSteps = [
-  {
-    icon: MapPin,
-    title: "Discover Rewards Nearby",
-    description: "Find exclusive deals and rewards from local businesses just by being in the right place at the right time."
-  },
-  {
-    icon: Wallet,
-    title: "Collect EmberX Tokens",
-    description: "Earn EmberX tokens automatically when you're within 8 meters of participating locations. No scanning required!"
-  },
-  {
-    icon: Gift,
-    title: "Redeem Amazing Deals",
-    description: "Use your tokens to unlock vouchers, discounts, and exclusive offers from your favorite brands."
-  },
-  {
-    icon: Shield,
-    title: "Your Privacy Matters",
-    description: "Choose your privacy level from fully public with leaderboards to completely anonymous. You're in control."
-  }
-];
+import { Zap } from 'lucide-react';
+import { ONBOARDING_HEADER, ONBOARDING_STEPS, ONBOARDING_BUTTONS, ONBOARDING_NAVIGATION } from '@/constants';
 
 export default function OnboardingPage() {
   const [currentStep, setCurrentStep] = useState(0);
 
   const nextStep = () => {
-    if (currentStep < onboardingSteps.length - 1) {
+    if (currentStep < ONBOARDING_STEPS.length - 1) {
       setCurrentStep(currentStep + 1);
     } else {
       // Redirect to coming soon page after onboarding
@@ -51,7 +29,7 @@ export default function OnboardingPage() {
     window.location.href = '/brand';
   };
 
-  const step = onboardingSteps[currentStep];
+  const step = ONBOARDING_STEPS[currentStep];
   const IconComponent = step.icon;
 
   return (
@@ -64,13 +42,13 @@ export default function OnboardingPage() {
               <Zap className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
             </div>
           </Link>
-          <h1 className="text-white text-2xl sm:text-3xl font-bold">EmberX</h1>
-          <p className="text-white/90 text-base sm:text-lg mt-1">Location-Based Rewards</p>
+          <h1 className="text-white text-2xl sm:text-3xl font-bold">{ONBOARDING_HEADER.logoText}</h1>
+          <p className="text-white/90 text-base sm:text-lg mt-1">{ONBOARDING_HEADER.subtitle}</p>
         </div>
 
         {/* Progress Indicators */}
         <div className="flex justify-center space-x-2 mb-6 sm:mb-8">
-          {onboardingSteps.map((_, index) => (
+          {ONBOARDING_STEPS.map((_, index) => (
             <div
               key={index}
               className={`h-2 rounded-full transition-all duration-300 ${
@@ -101,14 +79,14 @@ export default function OnboardingPage() {
                   onClick={prevStep}
                   className="flex-1 border-[#FF6900]/30 text-[#FF6900] hover:bg-[#FF6900]/10"
                 >
-                  Back
+                  {ONBOARDING_BUTTONS.back}
                 </Button>
               )}
               <Button
                 onClick={nextStep}
                 className="flex-1 bg-[#FF6900] text-white hover:bg-[#E55A00]"
               >
-                {currentStep === onboardingSteps.length - 1 ? 'Get Started' : 'Next'}
+                {currentStep === ONBOARDING_STEPS.length - 1 ? ONBOARDING_BUTTONS.getStarted : ONBOARDING_BUTTONS.next}
               </Button>
             </div>
           </CardContent>
@@ -119,7 +97,7 @@ export default function OnboardingPage() {
           onClick={skipOnboarding}
           className="w-full mt-4 sm:mt-6 text-white/80 hover:text-white text-sm transition-colors"
         >
-          Skip Introduction
+          {ONBOARDING_BUTTONS.skip}
         </button>
 
         {/* Navigation Links */}
@@ -128,14 +106,14 @@ export default function OnboardingPage() {
             href="/signin"
             className="text-white/80 hover:text-white text-sm transition-colors"
           >
-            Already have an account?
+            {ONBOARDING_NAVIGATION.alreadyHaveAccount}
           </Link>
           <span className="text-white/50">•</span>
           <Link
             href="/"
             className="text-white/80 hover:text-white text-sm transition-colors"
           >
-            Back to Home
+            {ONBOARDING_NAVIGATION.backToHome}
           </Link>
         </div>
       </div>

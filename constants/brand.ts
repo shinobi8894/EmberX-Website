@@ -1,5 +1,18 @@
 export const BRAND_NAME = 'Starbucks';
 
+// Dashboard Section
+export const DASHBOARD_SECTION = {
+  title: 'Active Campaigns',
+  subtitle: 'Manage and monitor your campaigns',
+  newCampaignButton: 'New Campaign',
+  statsLabels: {
+    activeCampaigns: 'Active Campaigns',
+    totalBudget: 'Total Budget',
+    amountSpent: 'Amount Spent',
+    totalCollections: 'Total Collections',
+  },
+};
+
 // Campaign Data
 export const CAMPAIGNS = [
   {
@@ -163,3 +176,147 @@ export const NOTIFICATION_SETTINGS = [
     description: 'Updates about new features and improvements',
   },
 ];
+
+// Campaign Filters
+export const CAMPAIGN_FILTERS = [
+  { id: 'all', label: 'All Campaigns' },
+  { id: 'active', label: 'Active' },
+  { id: 'paused', label: 'Paused' },
+  { id: 'scheduled', label: 'Scheduled' },
+];
+
+// Campaigns Page Content
+export const CAMPAIGNS_PAGE = {
+  header: {
+    title: 'Campaign Manager',
+    subtitle: 'Create and manage your reward campaigns',
+    createButton: 'Create Campaign',
+  },
+  search: {
+    placeholder: 'Search campaigns...',
+    filtersButton: 'Filters',
+  },
+  emptyState: {
+    title: 'No campaigns found',
+    subtitleWithSearch: 'Try adjusting your search',
+    subtitleNoSearch: 'Create your first campaign to get started',
+    createButton: 'Create Campaign',
+  },
+};
+
+// Campaign Card Labels
+export const CAMPAIGN_CARD = {
+  locations: 'locations',
+  ends: 'Ends',
+  buttons: {
+    pause: 'Pause',
+    resume: 'Resume',
+  },
+  stats: {
+    views: 'Views',
+    collected: 'Collected',
+    conversion: 'Conversion',
+    spent: 'Spent',
+    budget: 'Budget',
+  },
+};
+
+// Analytics Page Content
+export const ANALYTICS_PAGE = {
+  header: {
+    title: 'Analytics Overview',
+  },
+  stats: {
+    totalCollections: {
+      label: 'Total Collections',
+      value: '1,359',
+      change: '+12.5%',
+    },
+    totalViews: {
+      label: 'Total Views',
+      value: '20,700',
+      change: '+8.2%',
+    },
+    avgConversion: {
+      label: 'Avg. Conversion',
+      value: '6.6%',
+      change: '+0.4%',
+    },
+    totalSpent: {
+      label: 'Total Spent',
+      value: '$5,450',
+      change: '+15.3%',
+    },
+  },
+};
+
+// Settings Page Content
+export const SETTINGS_PAGE = {
+  tabs: {
+    company: { id: 'company', label: 'Company Info' },
+    notifications: { id: 'notifications', label: 'Notifications' },
+    team: { id: 'team', label: 'Team' },
+    billing: { id: 'billing', label: 'Billing' },
+  },
+  company: {
+    title: 'Company Information',
+    subtitle: 'Update your brand details and contact information',
+    fields: {
+      companyName: 'Company Name',
+      description: 'Description',
+      website: 'Website',
+      email: 'Email',
+      phone: 'Phone',
+      address: 'Address',
+    },
+    saveButton: 'Save Changes',
+  },
+  notifications: {
+    title: 'Notification Preferences',
+    subtitle: 'Manage how you receive updates and alerts',
+  },
+  team: {
+    title: 'Team Members',
+    subtitle: 'Manage your team access and permissions',
+    addButton: 'Add Member',
+    badges: {
+      active: 'ACTIVE',
+    },
+    buttons: {
+      edit: 'Edit',
+      delete: 'Delete',
+    },
+  },
+  billing: {
+    title: 'Billing & Subscription',
+    subtitle: 'Manage your subscription and payment details',
+    currentPlan: 'Current Plan',
+    billedLabel: 'Billed',
+    monthlySpendLabel: 'Monthly Spend',
+    nextBillingLabel: 'Next Billing Date',
+    paymentMethodLabel: 'Payment Method',
+    upgradeButton: 'Upgrade Plan',
+    updateButton: 'Update',
+  },
+};
+
+// Brand Header Content
+export const BRAND_HEADER = {
+  defaultTitle: 'Dashboard',
+  subtitle: 'Manage your EmberX campaigns',
+  searchPlaceholder: 'Search...',
+};
+
+// Brand Sidebar Content
+export const BRAND_SIDEBAR = {
+  logoText: 'EmberX',
+  consoleText: 'Brand Console',
+  quickStatsTitle: 'This Month',
+  quickStats: {
+    activeCampaigns: 'Active Campaigns',
+    totalSpend: 'Total Spend',
+    collections: 'Collections',
+  },
+  userRole: 'Manager',
+  logoutButton: 'Logout',
+};

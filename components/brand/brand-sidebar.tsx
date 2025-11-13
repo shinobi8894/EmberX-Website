@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { User, LogOut, ChevronDown } from 'lucide-react';
-import { BRAND_NAV_ITEMS, SIDEBAR_STATS, BRAND_NAME } from '../../constants';
+import { BRAND_NAV_ITEMS, SIDEBAR_STATS, BRAND_NAME, BRAND_SIDEBAR } from '../../constants';
 
 interface BrandSidebarProps {
   brandName?: string;
@@ -20,8 +20,8 @@ export function BrandSidebar({ brandName = BRAND_NAME }: BrandSidebarProps) {
             <span className="text-white font-bold text-lg">E</span>
           </div>
           <div>
-            <h1 className="font-bold text-lg text-foreground">EmberX</h1>
-            <p className="text-xs text-muted-foreground">Brand Console</p>
+            <h1 className="font-bold text-lg text-foreground">{BRAND_SIDEBAR.logoText}</h1>
+            <p className="text-xs text-muted-foreground">{BRAND_SIDEBAR.consoleText}</p>
           </div>
         </div>
       </div>
@@ -55,19 +55,19 @@ export function BrandSidebar({ brandName = BRAND_NAME }: BrandSidebarProps) {
       <div className="px-4 pb-4">
         <div className="p-4 bg-muted rounded-xl">
           <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">
-            This Month
+            {BRAND_SIDEBAR.quickStatsTitle}
           </h3>
           <div className="space-y-3">
             <div className="flex justify-between items-center">
-              <span className="text-sm text-muted-foreground">Active Campaigns</span>
+              <span className="text-sm text-muted-foreground">{BRAND_SIDEBAR.quickStats.activeCampaigns}</span>
               <span className="text-lg font-bold text-foreground">{SIDEBAR_STATS.activeCampaigns}</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-sm text-muted-foreground">Total Spend</span>
+              <span className="text-sm text-muted-foreground">{BRAND_SIDEBAR.quickStats.totalSpend}</span>
               <span className="text-lg font-bold text-[#FF6900]">${SIDEBAR_STATS.totalSpend.toLocaleString()}</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-sm text-muted-foreground">Collections</span>
+              <span className="text-sm text-muted-foreground">{BRAND_SIDEBAR.quickStats.collections}</span>
               <span className="text-lg font-bold text-foreground">{SIDEBAR_STATS.collections.toLocaleString()}</span>
             </div>
           </div>
@@ -82,7 +82,7 @@ export function BrandSidebar({ brandName = BRAND_NAME }: BrandSidebarProps) {
           </div>
           <div className="flex-1 min-w-0 text-left">
             <p className="font-medium text-foreground truncate">{brandName}</p>
-            <p className="text-xs text-muted-foreground">Manager</p>
+            <p className="text-xs text-muted-foreground">{BRAND_SIDEBAR.userRole}</p>
           </div>
           <ChevronDown className="w-4 h-4 text-muted-foreground" />
         </button>
@@ -91,7 +91,7 @@ export function BrandSidebar({ brandName = BRAND_NAME }: BrandSidebarProps) {
           className="w-full flex items-center gap-3 px-6 py-4 bg-card hover:bg-red-50 dark:hover:bg-red-900/10 transition-colors text-red-600 dark:text-red-400 border-t border-border"
         >
           <LogOut className="w-5 h-5" />
-          <span className="font-medium">Logout</span>
+          <span className="font-medium">{BRAND_SIDEBAR.logoutButton}</span>
         </Link>
       </div>
     </div>

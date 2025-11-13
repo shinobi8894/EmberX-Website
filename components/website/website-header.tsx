@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Download } from 'lucide-react';
+import { HEADER } from '@/constants';
 
 export function WebsiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -32,68 +33,49 @@ export function WebsiteHeader() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <span className={`text-2xl font-bold ${textColor}`}>EmberX</span>
+            <span className={`text-2xl font-bold ${textColor}`}>{HEADER.brandName}</span>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            <Link 
-              href="/"
-              className={`font-medium transition-colors ${
-                isActive('/') 
-                  ? 'text-[#FF6900]' 
-                  : navTextColor
-              }`}
-            >
-              Home
-            </Link>
-            <Link 
-              href="/about"
-              className={`font-medium transition-colors ${
-                isActive('/about') 
-                  ? 'text-[#FF6900]' 
-                  : navTextColor
-              }`}
-            >
-              About
-            </Link>
-            <Link 
-              href="/legal"
-              className={`font-medium transition-colors ${
-                isActive('/legal') 
-                  ? 'text-[#FF6900]' 
-                  : navTextColor
-              }`}
-            >
-              Legal
-            </Link>
-            <Link 
-              href="/coming-soon"
-              className={`font-medium transition-colors ${
-                isActive('/coming-soon') 
-                  ? 'text-[#FF6900]' 
-                  : navTextColor
-              }`}
-            >
-              Download
-            </Link>
+            {HEADER.navigation.map((link) => (
+              <Link 
+                key={link.href}
+                href={link.href}
+                className={`font-medium transition-colors ${
+                  isActive(link.href) 
+                    ? 'text-[#FF6900]' 
+                    : navTextColor
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
 
           {/* Desktop Auth Buttons */}
-          <div className="hidden md:flex items-center gap-4">
-            <Link href="/signin">
+          <div className="hidden md:flex items-center gap-3">
+            <Link href="/signin/user">
               <Button 
                 variant="ghost" 
                 className={`${navTextColor} font-medium`}
               >
-                Sign in
+                User Sign In
+              </Button>
+            </Link>
+            <Link href="/signin/brand">
+              <Button 
+                variant="ghost" 
+                className={`${navTextColor} font-medium`}
+              >
+                Brand Sign In
               </Button>
             </Link>
             <Link href="/signup">
               <Button 
                 className="bg-gradient-to-r from-[#FF6900] to-[#FF8533] hover:from-[#E55A00] hover:to-[#E57529] text-white rounded-full px-6 shadow-lg font-medium"
               >
-                Get Started
+                {HEADER.buttons.getStarted}
               </Button>
             </Link>
           </div>
@@ -111,65 +93,43 @@ export function WebsiteHeader() {
         {mobileMenuOpen && (
           <div className="md:hidden py-6 border-t border-white/10 bg-black/95 backdrop-blur-xl rounded-b-2xl">
             <nav className="flex flex-col gap-4">
-              <Link 
-                href="/"
-                onClick={() => setMobileMenuOpen(false)}
-                className={`text-left font-medium py-2 transition-colors ${
-                  isActive('/') 
-                    ? 'text-[#FF6900]' 
-                    : 'text-white/70 hover:text-white'
-                }`}
-              >
-                Home
-              </Link>
-              <Link 
-                href="/about"
-                onClick={() => setMobileMenuOpen(false)}
-                className={`text-left font-medium py-2 transition-colors ${
-                  isActive('/about') 
-                    ? 'text-[#FF6900]' 
-                    : 'text-white/70 hover:text-white'
-                }`}
-              >
-                About
-              </Link>
-              <Link 
-                href="/legal"
-                onClick={() => setMobileMenuOpen(false)}
-                className={`text-left font-medium py-2 transition-colors ${
-                  isActive('/legal') 
-                    ? 'text-[#FF6900]' 
-                    : 'text-white/70 hover:text-white'
-                }`}
-              >
-                Legal
-              </Link>
-              <Link 
-                href="/coming-soon"
-                onClick={() => setMobileMenuOpen(false)}
-                className={`text-left font-medium py-2 transition-colors flex items-center gap-2 ${
-                  isActive('/coming-soon') 
-                    ? 'text-[#FF6900]' 
-                    : 'text-white/70 hover:text-white'
-                }`}
-              >
-                <Download className="w-4 h-4" />
-                Download
-              </Link>
+              {HEADER.navigation.map((link) => (
+                <Link 
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`text-left font-medium py-2 transition-colors ${
+                    isActive(link.href) 
+                      ? 'text-[#FF6900]' 
+                      : 'text-white/70 hover:text-white'
+                  } ${link.label === 'Download' ? 'flex items-center gap-2' : ''}`}
+                >
+                  {link.label === 'Download' && <Download className="w-4 h-4" />}
+                  {link.label}
+                </Link>
+              ))}
               <div className="flex flex-col gap-3 pt-4 border-t border-white/20">
-                <Link href="/signin" onClick={() => setMobileMenuOpen(false)}>
+                <Link href="/signin/user" onClick={() => setMobileMenuOpen(false)}>
                   <Button 
                     variant="outline" 
                     className="w-full border-2 border-white/20 text-white hover:bg-white/10"
                   >
-                    Sign in
+                    User Sign In
+                  </Button>
+                </Link>
+                <Link href="/signin/brand" onClick={() => setMobileMenuOpen(false)}>
+                  <Button 
+                    variant="outline" 
+                    className="w-full border-2 border-white/20 text-white hover:bg-white/10"
+                  >
+                    Brand Sign In
                   </Button>
                 </Link>
                 <Link href="/signup" onClick={() => setMobileMenuOpen(false)}>
                   <Button 
                     className="w-full bg-gradient-to-r from-[#FF6900] to-[#FF8533] hover:from-[#E55A00] hover:to-[#E57529] text-white"
                   >
-                    Get Started
+                    {HEADER.buttons.getStarted}
                   </Button>
                 </Link>
               </div>

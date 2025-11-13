@@ -4,11 +4,33 @@ export const AUTH_STATS = [
   { value: '500+', label: 'Cities' },
 ];
 
-export const SIGNIN_CONTENT = {
+export const SIGNIN_SELECTION = {
+  brandName: 'EmberX',
+  title: 'Sign In to EmberX',
+  subtitle: 'Choose how you want to access your account',
+  userCard: {
+    title: 'User Sign In',
+    description: 'Access your rewards, collect tokens, and explore nearby offers',
+    features: ['View your rewards', 'Collect tokens', 'Track locations'],
+    buttonText: 'Sign In as User',
+    href: '/signin/user',
+  },
+  brandCard: {
+    title: 'Brand Sign In',
+    description: 'Manage your campaigns, analytics, and customer engagement',
+    features: ['Manage campaigns', 'View analytics', 'Track engagement'],
+    buttonText: 'Sign In as Brand',
+    href: '/signin/brand',
+  },
+};
+
+export const USER_SIGNIN_CONTENT = {
+  brandName: 'EmberX',
+  backgroundAlt: 'EmberX Background',
   welcomeBadge: 'Welcome Back',
   mobileTitle: 'Welcome Back',
   mobileSubtitle: 'Sign in to continue',
-  desktopTitle: 'Sign In',
+  desktopTitle: 'User Sign In',
   desktopSubtitle: 'Enter your credentials to access your account',
   heroTitle: 'start your\nreward\njourney',
   heroHighlight: 'reward',
@@ -25,23 +47,96 @@ export const SIGNIN_CONTENT = {
   switch: {
     message: "Don't have an account?",
     link: 'Sign Up',
+    brandMessage: 'Are you a brand?',
+    brandLink: 'Sign in here',
   },
   demo: {
     title: 'Demo Credentials',
-    email: 'demo@emberx.com',
+    email: 'user@emberx.com',
+    password: 'demo123',
+  },
+};
+
+export const BRAND_SIGNIN_CONTENT = {
+  brandName: 'EmberX',
+  backgroundAlt: 'EmberX Background',
+  welcomeBadge: 'Brand Portal',
+  mobileTitle: 'Brand Sign In',
+  mobileSubtitle: 'Access your brand dashboard',
+  desktopTitle: 'Brand Sign In',
+  desktopSubtitle: 'Manage your campaigns and analytics',
+  heroTitle: 'Welcome to Your',
+  heroHighlight: 'Brand Dashboard',
+  heroDescription: 'Access powerful tools to grow your brand, engage customers, and drive real results with location-based marketing.',
+  navigation: {
+    userLogin: 'User Login',
+    contactSales: 'Contact Sales',
+  },
+  features: [
+    {
+      title: 'Real-time Analytics',
+      description: 'Track performance metrics as they happen',
+    },
+    {
+      title: 'Customer Insights',
+      description: 'Understand your audience behavior',
+    },
+    {
+      title: 'Campaign Management',
+      description: 'Create and optimize campaigns easily',
+    },
+    {
+      title: 'Enterprise Security',
+      description: 'Bank-level encryption and protection',
+    },
+  ],
+  stats: [
+    { value: '50K+', label: 'Active Brands' },
+    { value: '10M+', label: 'Monthly Impressions' },
+    { value: '85%', label: 'Engagement Rate' },
+  ],
+  form: {
+    emailLabel: 'Brand Email',
+    emailPlaceholder: 'brand@company.com',
+    passwordLabel: 'Password',
+    passwordPlaceholder: 'Enter your password',
+    rememberMe: 'Remember me',
+    forgotPassword: 'Forgot password?',
+    submitButton: 'Access Dashboard',
+    loadingButton: 'Signing In...',
+  },
+  switch: {
+    message: "Don't have a brand account?",
+    link: 'Contact Sales',
+    userMessage: 'Are you a user?',
+    userLink: 'Sign in here',
+  },
+  demo: {
+    title: 'Demo Credentials',
+    email: 'brand@emberx.com',
     password: 'demo123',
   },
 };
 
 export const SIGNUP_CONTENT = {
+  brandName: 'EmberX',
+  backgroundAlt: 'EmberX Background',
   badge: 'Join EmberX',
   mobileTitle: 'Create Account',
   mobileSubtitle: 'Start your reward journey',
   desktopTitle: 'Sign Up',
   desktopSubtitle: 'Create your account to get started',
-  heroTitle: 'become\npart of the\nfuture',
-  heroHighlight: 'future',
-  heroDescription: 'Join millions discovering and collecting rewards effortlessly. Your journey to smarter shopping starts here.',
+  hero: {
+    titleLine1: 'discover',
+    titleLine2: 'rewards',
+    titleLine3: 'everywhere',
+    description: 'Join over 1 million users discovering rewards, collecting brand tokens, and exploring their cities in a whole new way.',
+  },
+  features: [
+    'Location-based rewards',
+    'Auto-collect within 8 meters',
+    'Privacy-focused experience',
+  ],
   form: {
     usernameLabel: 'Username',
     usernamePlaceholder: '@username',
@@ -53,8 +148,11 @@ export const SIGNUP_CONTENT = {
     passwordPlaceholder: 'Create a strong password',
     confirmPasswordLabel: 'Confirm Password',
     confirmPasswordPlaceholder: 'Re-enter your password',
-    termsText: 'I agree to the Terms of Service and Privacy Policy',
-    marketingText: 'I want to receive marketing updates and promotions',
+    termsPrefix: 'I agree to the',
+    termsLink: 'Terms of Service',
+    termsAnd: 'and',
+    privacyLink: 'Privacy Policy',
+    marketingText: 'I want to receive marketing emails about new features and deals',
     submitButton: 'Create Account',
     loadingButton: 'Creating Account...',
   },

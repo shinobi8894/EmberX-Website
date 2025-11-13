@@ -1,48 +1,41 @@
-import { MapPin, Zap, Gift, Users } from 'lucide-react';
+import { MapPin, Zap, Gift, Shield } from 'lucide-react';
+
+export const ONBOARDING_HEADER = {
+  logoText: 'EmberX',
+  subtitle: 'Location-Based Rewards',
+};
 
 export const ONBOARDING_STEPS = [
   {
-    id: 1,
     icon: MapPin,
-    title: 'Discover Nearby Rewards',
-    description: 'EmberX automatically shows you rewards from brands near your location. No searching required.',
-    color: 'from-blue-500 to-cyan-500',
+    title: 'Discover Rewards Nearby',
+    description: 'Find exclusive deals and rewards from local businesses just by being in the right place at the right time.',
   },
   {
-    id: 2,
     icon: Zap,
-    title: 'Auto-Collect Your Rewards',
-    description: 'Walk within 8 meters of a reward and it\'s automatically added to your wallet. Zero friction.',
-    color: 'from-purple-500 to-pink-500',
+    title: 'Collect EmberX Tokens',
+    description: 'Earn EmberX tokens automatically when you\'re within 8 meters of participating locations. No scanning required!',
   },
   {
-    id: 3,
     icon: Gift,
-    title: 'Redeem Instantly',
-    description: 'Show your QR code at checkout to redeem rewards. Simple, fast, and contactless.',
-    color: 'from-orange-500 to-red-500',
+    title: 'Redeem Amazing Deals',
+    description: 'Use your tokens to unlock vouchers, discounts, and exclusive offers from your favorite brands.',
   },
   {
-    id: 4,
-    icon: Users,
-    title: 'Compete & Share',
-    description: 'Join leaderboards, share achievements, and earn bonus rewards for referring friends.',
-    color: 'from-green-500 to-emerald-500',
+    icon: Shield,
+    title: 'Your Privacy Matters',
+    description: 'Choose your privacy level from fully public with leaderboards to completely anonymous. You\'re in control.',
   },
-];
-
-export const ONBOARDING_FEATURES = [
-  'No scanning or manual check-ins',
-  'Privacy controls at every level',
-  'Works in background mode',
-  'Smart notifications for high-value rewards',
-  'Customizable brand preferences',
-  'Real-time reward tracking',
 ];
 
 export const ONBOARDING_BUTTONS = {
-  skip: 'Skip Tour',
+  skip: 'Skip Introduction',
   next: 'Next',
-  previous: 'Previous',
+  back: 'Back',
   getStarted: 'Get Started',
+};
+
+export const ONBOARDING_NAVIGATION = {
+  alreadyHaveAccount: 'Already have an account?',
+  backToHome: 'Back to Home',
 };

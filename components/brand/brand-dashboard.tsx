@@ -4,7 +4,7 @@ import { Users, DollarSign, Target, TrendingUp, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { StatCard } from './stat-card';
 import { CampaignCard } from './campaign-card';
-import { CAMPAIGNS } from '../../constants';
+import { CAMPAIGNS, DASHBOARD_SECTION } from '../../constants';
 
 interface BrandDashboardProps {
   brandName: string;
@@ -20,28 +20,28 @@ export function BrandDashboard({ brandName }: BrandDashboardProps) {
 
   const stats = [
     {
-      label: 'Active Campaigns',
+      label: DASHBOARD_SECTION.statsLabels.activeCampaigns,
       value: activeCampaigns,
       icon: Target,
       change: '+2',
       color: 'from-[#FF6900] to-[#FF8533]'
     },
     {
-      label: 'Total Budget',
+      label: DASHBOARD_SECTION.statsLabels.totalBudget,
       value: `$${totalBudget.toLocaleString()}`,
       icon: DollarSign,
       change: '+12%',
       color: 'from-gray-900 to-gray-700'
     },
     {
-      label: 'Amount Spent',
+      label: DASHBOARD_SECTION.statsLabels.amountSpent,
       value: `$${totalSpent.toLocaleString()}`,
       icon: TrendingUp,
       change: '+8%',
       color: 'from-gray-600 to-gray-500'
     },
     {
-      label: 'Total Collections',
+      label: DASHBOARD_SECTION.statsLabels.totalCollections,
       value: totalCollected.toLocaleString(),
       icon: Users,
       change: '+24%',
@@ -61,12 +61,12 @@ export function BrandDashboard({ brandName }: BrandDashboardProps) {
       {/* Campaigns Section */}
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="text-xl font-bold text-foreground">Active Campaigns</h3>
-          <p className="text-sm text-muted-foreground">Manage and monitor your campaigns</p>
+          <h3 className="text-xl font-bold text-foreground">{DASHBOARD_SECTION.title}</h3>
+          <p className="text-sm text-muted-foreground">{DASHBOARD_SECTION.subtitle}</p>
         </div>
         <Button className="bg-[#FF6900] hover:bg-[#E55A00] text-white shadow-sm">
           <Plus className="w-4 h-4 mr-2" />
-          New Campaign
+          {DASHBOARD_SECTION.newCampaignButton}
         </Button>
       </div>
 

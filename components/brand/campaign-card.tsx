@@ -13,6 +13,7 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Campaign } from '../../constants/types';
+import { CAMPAIGN_CARD } from '../../constants';
 
 interface CampaignCardProps {
   campaign: Campaign;
@@ -32,11 +33,11 @@ export function CampaignCard({ campaign }: CampaignCardProps) {
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
               <div className="flex items-center gap-1">
                 <MapPin className="w-4 h-4" />
-                <span>{campaign.locations} locations</span>
+                <span>{campaign.locations} {CAMPAIGN_CARD.locations}</span>
               </div>
               <div className="flex items-center gap-1">
                 <Calendar className="w-4 h-4" />
-                <span>Ends {campaign.endDate}</span>
+                <span>{CAMPAIGN_CARD.ends} {campaign.endDate}</span>
               </div>
               <Badge className={`${
                 campaign.status === 'active' 
@@ -53,12 +54,12 @@ export function CampaignCard({ campaign }: CampaignCardProps) {
           {campaign.status === 'active' ? (
             <Button variant="outline" size="sm" className="border-border">
               <Pause className="w-4 h-4 mr-2" />
-              Pause
+              {CAMPAIGN_CARD.buttons.pause}
             </Button>
           ) : (
             <Button size="sm" className="bg-[#FF6900] hover:bg-[#E55A00] text-white">
               <Play className="w-4 h-4 mr-2" />
-              Resume
+              {CAMPAIGN_CARD.buttons.resume}
             </Button>
           )}
           <Button variant="ghost" size="sm">
@@ -74,7 +75,7 @@ export function CampaignCard({ campaign }: CampaignCardProps) {
           <div className="p-6 bg-muted/50">
             <div className="flex items-center gap-2 mb-3">
               <Eye className="w-4 h-4 text-muted-foreground" />
-              <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Views</span>
+              <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">{CAMPAIGN_CARD.stats.views}</span>
             </div>
             <p className="text-2xl font-bold text-foreground">{campaign.views.toLocaleString()}</p>
           </div>
@@ -83,7 +84,7 @@ export function CampaignCard({ campaign }: CampaignCardProps) {
           <div className="p-6 bg-muted/50">
             <div className="flex items-center gap-2 mb-3">
               <Target className="w-4 h-4 text-muted-foreground" />
-              <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Collected</span>
+              <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">{CAMPAIGN_CARD.stats.collected}</span>
             </div>
             <p className="text-2xl font-bold text-foreground">{campaign.collected}</p>
           </div>
@@ -92,7 +93,7 @@ export function CampaignCard({ campaign }: CampaignCardProps) {
           <div className="p-6 bg-muted/50">
             <div className="flex items-center gap-2 mb-3">
               <TrendingUp className="w-4 h-4 text-muted-foreground" />
-              <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Conversion</span>
+              <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">{CAMPAIGN_CARD.stats.conversion}</span>
             </div>
             <p className="text-2xl font-bold text-foreground">{campaign.conversionRate}%</p>
           </div>
@@ -101,7 +102,7 @@ export function CampaignCard({ campaign }: CampaignCardProps) {
           <div className="p-6 bg-muted/50">
             <div className="flex items-center gap-2 mb-3">
               <DollarSign className="w-4 h-4 text-muted-foreground" />
-              <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Spent</span>
+              <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">{CAMPAIGN_CARD.stats.spent}</span>
             </div>
             <p className="text-2xl font-bold text-foreground">${campaign.spent.toLocaleString()}</p>
           </div>
@@ -110,7 +111,7 @@ export function CampaignCard({ campaign }: CampaignCardProps) {
           <div className="p-6 bg-muted/50">
             <div className="flex items-center gap-2 mb-3">
               <DollarSign className="w-4 h-4 text-muted-foreground" />
-              <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Budget</span>
+              <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">{CAMPAIGN_CARD.stats.budget}</span>
             </div>
             <p className="text-2xl font-bold text-foreground">${campaign.budget.toLocaleString()}</p>
             <div className="mt-3 w-full h-2 bg-muted rounded-full overflow-hidden">

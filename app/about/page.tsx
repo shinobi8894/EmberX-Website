@@ -15,41 +15,22 @@ import {
   Heart,
   Sparkles,
 } from 'lucide-react';
+import { 
+  ABOUT_HERO, 
+  ABOUT_VALUES, 
+  ABOUT_FEATURES, 
+  ABOUT_STATS,
+  ABOUT_MOBILE_SECTION,
+  ABOUT_VALUES_SECTION,
+  ABOUT_MISSION_SECTION,
+  ABOUT_JOURNEY_SECTION,
+  ABOUT_FINAL_CTA,
+} from '@/constants';
 
 export default function AboutPage() {
-  const values = [
-    {
-      icon: Target,
-      title: "Mission-Driven",
-      description:
-        "Creating meaningful connections between businesses and customers through innovative technology.",
-    },
-    {
-      icon: Users,
-      title: "User-Centric",
-      description:
-        "Every feature is designed with our users' needs and privacy at the forefront.",
-    },
-    {
-      icon: Shield,
-      title: "Privacy First",
-      description:
-        "Your data belongs to you. We provide comprehensive privacy controls and transparency.",
-    },
-    {
-      icon: Zap,
-      title: "Innovation",
-      description:
-        "Pushing boundaries with location-based technology and reward systems.",
-    },
-  ];
+  const values = ABOUT_VALUES;
 
-  const features = [
-    "Location-based reward discovery",
-    "Auto-collection within 8 meters",
-    "Brand-specific token systems",
-    "Real-time campaign tracking",
-  ];
+  const features = ABOUT_FEATURES;
 
   return (
     <div className="overflow-hidden bg-white dark:bg-zinc-950">
@@ -76,44 +57,37 @@ export default function AboutPage() {
             <div className="inline-flex items-center gap-2 bg-[#FF6900]/20 backdrop-blur-sm border border-[#FF6900]/30 rounded-full px-6 py-3 mb-8">
               <Sparkles className="w-4 h-4 text-[#FF6900]" />
               <span className="text-sm uppercase tracking-wider text-white/90">
-                About EmberX
+                {ABOUT_HERO.badge}
               </span>
             </div>
 
             <h1 className="text-6xl sm:text-7xl lg:text-9xl font-bold leading-[0.9] mb-8 uppercase max-w-5xl text-white">
-              <span className="block">redefining</span>
+              <span className="block">{ABOUT_HERO.titleLine1}</span>
               <span className="block text-[#FF6900]">
-                rewards
+                {ABOUT_HERO.titleLine2}
               </span>
             </h1>
 
-            <p className="text-xl sm:text-2xl lg:text-3xl text-white/80 max-w-3xl leading-relaxed mb-12">
-              We're building the future of location-based
-              experiences, connecting millions of people with
-              brands they love through innovative technology
+            <p className="text-lg lg:text-lg text-white/80 max-w-3xl leading-relaxed mb-12">
+              {ABOUT_HERO.subtitle}
             </p>
 
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl">
-              {[
-                { number: "1M+", label: "Active Users" },
-                { number: "50K+", label: "Partner Brands" },
-                { number: "500+", label: "Cities Worldwide" },
-                {
-                  number: "$10M+",
-                  label: "Rewards Distributed",
-                },
-              ].map((stat, index) => (
+              {ABOUT_STATS.map((stat, index) => (
                 <div
                   key={index}
                   className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors"
                 >
                   <div className="text-4xl lg:text-5xl font-bold text-[#FF6900] mb-2">
-                    {stat.number}
+                    {stat.value}
                   </div>
                   <div className="text-sm text-white/70 uppercase tracking-wider">
                     {stat.label}
                   </div>
+                  {stat.description && (
+                    <div className="text-xs text-white/50 mt-1">{stat.description}</div>
+                  )}
                 </div>
               ))}
             </div>
@@ -183,26 +157,23 @@ export default function AboutPage() {
             {/* Content */}
             <div>
               <div className="inline-block bg-[#FF6900] text-white px-4 py-2 rounded-lg mb-6 uppercase tracking-wider text-sm">
-                The Experience
+                {ABOUT_MOBILE_SECTION.badge}
               </div>
 
               <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[0.95] mb-8 uppercase">
                 <span className="block text-zinc-900 dark:text-white">
-                  discover
+                  {ABOUT_MOBILE_SECTION.title.line1}
                 </span>
                 <span className="block text-zinc-900 dark:text-white">
-                  rewards
+                  {ABOUT_MOBILE_SECTION.title.line2}
                 </span>
                 <span className="block text-[#FF6900]">
-                  everywhere
+                  {ABOUT_MOBILE_SECTION.title.line3}
                 </span>
               </h2>
 
               <p className="text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed mb-8">
-                EmberX transforms how you interact with brands.
-                Our mobile app uses advanced location technology
-                to show you rewards within walking distance,
-                making every step potentially rewarding.
+                {ABOUT_MOBILE_SECTION.subtitle}
               </p>
 
               {/* Features List */}
@@ -222,12 +193,12 @@ export default function AboutPage() {
                 ))}
               </div>
 
-              <Link href="/coming-soon">
+              <Link href={ABOUT_MOBILE_SECTION.ctaLink}>
                 <Button
                   size="lg"
                   className="bg-[#FF6900] hover:bg-[#E55A00] text-white px-10 h-14 rounded-full shadow-lg group"
                 >
-                  Download Now
+                  {ABOUT_MOBILE_SECTION.ctaText}
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
@@ -242,14 +213,14 @@ export default function AboutPage() {
           <div className="text-center mb-20">
             <h2 className="text-5xl lg:text-7xl font-bold mb-6 uppercase leading-tight">
               <span className="block text-zinc-900 dark:text-white">
-                our
+                {ABOUT_VALUES_SECTION.title.line1}
               </span>
               <span className="block text-[#FF6900]">
-                values
+                {ABOUT_VALUES_SECTION.title.line2}
               </span>
             </h2>
             <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-              The principles that guide everything we do
+              {ABOUT_VALUES_SECTION.subtitle}
             </p>
           </div>
 
@@ -281,7 +252,7 @@ export default function AboutPage() {
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1690378820474-b468b8ee64d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWFtJTIwY29sbGFib3JhdGlvbiUyMG9mZmljZXxlbnwxfHx8fDE3NjIzNjUzMjN8MA&ixlib=rb-4.1.0&q=80&w=1080"
+            src={ABOUT_MISSION_SECTION.image}
             alt="Team collaboration"
             className="w-full h-full object-cover"
           />
@@ -291,30 +262,21 @@ export default function AboutPage() {
         <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 py-32">
           <div className="max-w-3xl">
             <div className="inline-block bg-[#FF6900] text-white px-4 py-2 rounded-lg mb-6 uppercase tracking-wider text-sm">
-              Our Mission
+              {ABOUT_MISSION_SECTION.badge}
             </div>
 
             <h2 className="text-5xl sm:text-6xl lg:text-8xl font-bold leading-[0.95] mb-10 uppercase text-white">
-              <span className="block">bringing</span>
-              <span className="block">communities</span>
+              <span className="block">{ABOUT_MISSION_SECTION.title.line1}</span>
+              <span className="block">{ABOUT_MISSION_SECTION.title.line2}</span>
               <span className="block text-[#FF6900]">
-                together
+                {ABOUT_MISSION_SECTION.title.line3}
               </span>
             </h2>
 
             <div className="space-y-6 text-xl text-white/80 leading-relaxed mb-12">
-              <p>
-                To create a world where discovering and
-                supporting local businesses is effortless,
-                rewarding, and meaningful. We believe that
-                technology should bring people closer to their
-                communities, not further apart.
-              </p>
-              <p>
-                Through EmberX, we're building bridges between
-                businesses and customers, creating win-win
-                relationships that benefit entire communities.
-              </p>
+              {ABOUT_MISSION_SECTION.content.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
             </div>
 
             <div className="flex flex-wrap gap-4">
@@ -323,7 +285,7 @@ export default function AboutPage() {
                   size="lg"
                   className="bg-[#FF6900] hover:bg-[#E55A00] text-white px-10 h-14 rounded-full shadow-lg group"
                 >
-                  Join Our Mission
+                  {ABOUT_MISSION_SECTION.ctaText}
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
@@ -338,44 +300,19 @@ export default function AboutPage() {
           <div className="text-center mb-20">
             <h2 className="text-5xl lg:text-7xl font-bold mb-6 uppercase leading-tight">
               <span className="block text-zinc-900 dark:text-white">
-                our
+                {ABOUT_JOURNEY_SECTION.title.line1}
               </span>
               <span className="block text-[#FF6900]">
-                journey
+                {ABOUT_JOURNEY_SECTION.title.line2}
               </span>
             </h2>
             <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-              Building the future, one milestone at a time
+              {ABOUT_JOURNEY_SECTION.subtitle}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                year: "2023",
-                title: "Founded",
-                desc: "EmberX was born",
-                stat: "Day 1",
-              },
-              {
-                year: "2024",
-                title: "Global Launch",
-                desc: "500+ cities worldwide",
-                stat: "500+",
-              },
-              {
-                year: "2024",
-                title: "Growth",
-                desc: "First million users",
-                stat: "1M+",
-              },
-              {
-                year: "2025",
-                title: "Impact",
-                desc: "Rewards distributed",
-                stat: "$10M+",
-              },
-            ].map((milestone, index) => (
+            {ABOUT_JOURNEY_SECTION.milestones.map((milestone, index) => (
               <div key={index} className="relative group">
                 <div className="bg-gradient-to-br from-zinc-100 to-white dark:from-zinc-900 dark:to-black border border-zinc-200 dark:border-zinc-800 rounded-3xl p-8 h-full hover:border-[#FF6900]/50 transition-all duration-300">
                   <div className="text-6xl font-bold text-[#FF6900] mb-4 opacity-20 group-hover:opacity-100 transition-opacity">
@@ -385,7 +322,7 @@ export default function AboutPage() {
                     {milestone.title}
                   </h3>
                   <p className="text-zinc-600 dark:text-zinc-400 mb-6">
-                    {milestone.desc}
+                    {milestone.description}
                   </p>
                   <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800">
                     <div className="text-4xl font-bold text-zinc-900 dark:text-white">
@@ -403,7 +340,7 @@ export default function AboutPage() {
       <section className="relative min-h-[70vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1519662978799-2f05096d3636?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBhcmNoaXRlY3R1cmV8ZW58MXx8fHwxNzYyMzg4NDk2fDA&ixlib=rb-4.1.0&q=80&w=1080"
+            src={ABOUT_FINAL_CTA.image}
             alt="Modern architecture"
             className="w-full h-full object-cover"
           />
@@ -415,22 +352,21 @@ export default function AboutPage() {
           <div className="inline-flex items-center gap-2 bg-[#FF6900]/20 backdrop-blur-sm border border-[#FF6900]/30 rounded-full px-6 py-3 mb-8">
             <Heart className="w-4 h-4 text-[#FF6900]" />
             <span className="text-sm uppercase tracking-wider text-white/90">
-              Join Us
+              {ABOUT_FINAL_CTA.badge}
             </span>
           </div>
 
           <h2 className="text-5xl sm:text-6xl lg:text-8xl font-bold leading-[0.95] mb-8 uppercase">
             <span className="block text-white">
-              ready to be
+              {ABOUT_FINAL_CTA.title.line1}
             </span>
             <span className="block text-[#FF6900]">
-              part of the future?
+              {ABOUT_FINAL_CTA.title.line2}
             </span>
           </h2>
 
           <p className="text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed mb-12">
-            Join millions of users and thousands of brands
-            building the future of location-based rewards
+            {ABOUT_FINAL_CTA.subtitle}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -439,7 +375,7 @@ export default function AboutPage() {
                 size="lg"
                 className="bg-[#FF6900] hover:bg-[#E55A00] text-white px-12 h-16 rounded-full shadow-lg group"
               >
-                Get Started Today
+                {ABOUT_FINAL_CTA.cta.primary}
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
@@ -448,7 +384,7 @@ export default function AboutPage() {
               size="lg"
               className="border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 px-12 h-16 rounded-full"
             >
-              Contact Our Team
+              {ABOUT_FINAL_CTA.cta.secondary}
             </Button>
           </div>
         </div>

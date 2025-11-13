@@ -5,13 +5,74 @@ import {
   Settings 
 } from 'lucide-react';
 
-// Public website navigation
-export const WEBSITE_NAV_ITEMS = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/legal', label: 'Legal' },
-  { href: '/coming-soon', label: 'Download' },
-];
+// Website Header & Footer
+export const HEADER = {
+  brandName: 'EmberX',
+  navigation: [
+    { href: '/', label: 'Home' },
+    { href: '/about', label: 'About' },
+    { href: '/legal', label: 'Legal' },
+    { href: '/coming-soon', label: 'Download' },
+  ],
+  buttons: {
+    signin: 'Sign in',
+    getStarted: 'Get Started',
+  },
+};
+
+export const FOOTER = {
+  brandName: 'EmberX',
+  tagline: 'The future of location-based rewards. Discover, collect, and redeem from your favorite brands.',
+  newsletter: {
+    title: 'Stay updated',
+    placeholder: 'Enter your email',
+  },
+  sections: {
+    product: {
+      title: 'Product',
+      links: [
+        { href: '#features', label: 'Features' },
+        { href: '#how-it-works', label: 'How it Works' },
+        { href: '/brand', label: 'For Businesses' },
+      ],
+    },
+    company: {
+      title: 'Company',
+      links: [
+        { href: '#careers', label: 'Careers' },
+        { href: '#contact', label: 'Contact' },
+      ],
+    },
+    resources: {
+      title: 'Resources',
+      links: [
+        { href: '#help', label: 'Help Center' },
+        { href: '#community', label: 'Community' },
+        { href: '#docs', label: 'Documentation' },
+        { href: '#api', label: 'API' },
+      ],
+    },
+    legal: {
+      title: 'Legal',
+      links: [
+        { href: '/legal', label: 'Privacy' },
+        { href: '/legal', label: 'Terms' },
+        { href: '/legal', label: 'Cookies' },
+      ],
+    },
+  },
+  social: {
+    twitter: '#twitter',
+    linkedin: '#linkedin',
+    instagram: '#instagram',
+    github: '#github',
+    email: 'mailto:hello@emberx.com',
+  },
+  copyright: '© 2025 EmberX. All rights reserved.',
+};
+
+// Public website navigation (legacy)
+export const WEBSITE_NAV_ITEMS = HEADER.navigation;
 
 // Brand console navigation
 export const BRAND_NAV_ITEMS = [
@@ -27,14 +88,6 @@ export const BRAND_SETTINGS_TABS = [
   { id: 'notifications', label: 'Notifications' },
   { id: 'team', label: 'Team' },
   { id: 'billing', label: 'Billing' },
-];
-
-// Campaign filters
-export const CAMPAIGN_FILTERS = [
-  { id: 'all', label: 'All Campaigns' },
-  { id: 'active', label: 'Active' },
-  { id: 'paused', label: 'Paused' },
-  { id: 'scheduled', label: 'Scheduled' },
 ];
 
 // Navigation routes

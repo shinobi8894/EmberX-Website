@@ -5,7 +5,7 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { CampaignCard } from './campaign-card';
-import { CAMPAIGNS, CAMPAIGN_FILTERS } from '../../constants';
+import { CAMPAIGNS, CAMPAIGN_FILTERS, CAMPAIGNS_PAGE } from '../../constants';
 
 interface BrandCampaignsProps {
   brandName: string;
@@ -39,12 +39,12 @@ export function BrandCampaigns({ brandName }: BrandCampaignsProps) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="text-xl font-bold text-foreground">Campaign Manager</h3>
-          <p className="text-sm text-muted-foreground">Create and manage your reward campaigns</p>
+          <h3 className="text-xl font-bold text-foreground">{CAMPAIGNS_PAGE.header.title}</h3>
+          <p className="text-sm text-muted-foreground">{CAMPAIGNS_PAGE.header.subtitle}</p>
         </div>
         <Button className="bg-[#FF6900] hover:bg-[#E55A00] text-white shadow-sm">
           <Plus className="w-4 h-4 mr-2" />
-          Create Campaign
+          {CAMPAIGNS_PAGE.header.createButton}
         </Button>
       </div>
 
@@ -55,7 +55,7 @@ export function BrandCampaigns({ brandName }: BrandCampaignsProps) {
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input
               type="search"
-              placeholder="Search campaigns..."
+              placeholder={CAMPAIGNS_PAGE.search.placeholder}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-10 bg-muted border-border"
@@ -63,7 +63,7 @@ export function BrandCampaigns({ brandName }: BrandCampaignsProps) {
           </div>
           <Button variant="outline" className="border-border">
             <Filter className="w-4 h-4 mr-2" />
-            Filters
+            {CAMPAIGNS_PAGE.search.filtersButton}
           </Button>
         </div>
 
@@ -98,13 +98,13 @@ export function BrandCampaigns({ brandName }: BrandCampaignsProps) {
           <Card className="p-12 bg-card border-border">
             <div className="text-center">
               <Target className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
-              <h3 className="text-xl font-bold text-foreground mb-2">No campaigns found</h3>
+              <h3 className="text-xl font-bold text-foreground mb-2">{CAMPAIGNS_PAGE.emptyState.title}</h3>
               <p className="text-muted-foreground mb-6">
-                {searchQuery ? 'Try adjusting your search' : 'Create your first campaign to get started'}
+                {searchQuery ? CAMPAIGNS_PAGE.emptyState.subtitleWithSearch : CAMPAIGNS_PAGE.emptyState.subtitleNoSearch}
               </p>
               <Button className="bg-[#FF6900] hover:bg-[#E55A00] text-white">
                 <Plus className="w-4 h-4 mr-2" />
-                Create Campaign
+                {CAMPAIGNS_PAGE.emptyState.createButton}
               </Button>
             </div>
           </Card>

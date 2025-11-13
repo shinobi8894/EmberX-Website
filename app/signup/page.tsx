@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Eye, EyeOff, Loader2, Check } from 'lucide-react';
+import { AUTH_STATS, SIGNUP_CONTENT, AUTH_ERRORS, AUTH_IMAGE_URL, PASSWORD_VALIDATION } from '@/constants';
 
 export default function SignUpPage() {
   const [username, setUsername] = useState('');
@@ -22,38 +23,37 @@ export default function SignUpPage() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const passwordRequirements = [
-    { met: password.length >= 8, text: 'At least 8 characters' },
-    { met: /[A-Z]/.test(password), text: 'One uppercase letter' },
-    { met: /[0-9]/.test(password), text: 'One number' }
-  ];
+  const passwordRequirements = SIGNUP_CONTENT.passwordRequirements.map(req => ({
+    met: PASSWORD_VALIDATION[req.id as keyof typeof PASSWORD_VALIDATION](password),
+    text: req.text
+  }));
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
 
     if (!username || !email || !mobile || !password || !confirmPassword) {
-      setError('Please fill in all fields');
+      setError(AUTH_ERRORS.emptyFields);
       return;
     }
 
     if (!username.startsWith('@')) {
-      setError('Username must start with @');
+      setError(AUTH_ERRORS.usernameFormat);
       return;
     }
 
     if (password !== confirmPassword) {
-      setError('Passwords do not match');
+      setError(AUTH_ERRORS.passwordMismatch);
       return;
     }
 
     if (!passwordRequirements.every(req => req.met)) {
-      setError('Password does not meet requirements');
+      setError(AUTH_ERRORS.passwordRequirements);
       return;
     }
 
     if (!agreeTerms) {
-      setError('Please agree to the Terms of Service');
+      setError(AUTH_ERRORS.agreeTerms);
       return;
     }
 
@@ -74,8 +74,8 @@ export default function SignUpPage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1611416507098-e0842376fad8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1cmJhbiUyMGNpdHklMjByZXdhcmRzfGVufDF8fHx8MTc2MjY5MDU1Mnww&ixlib=rb-4.1.0&q=80&w=1080"
-            alt="EmberX Background"
+            src={AUTH_IMAGE_URL}
+            alt={SIGNUP_CONTENT.backgroundAlt}
             className="w-full h-full object-cover opacity-40"
           />
           {/* Dark Overlay */}
@@ -91,49 +91,38 @@ export default function SignUpPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <span className="text-white text-xl font-bold">EmberX</span>
+            <span className="text-white text-xl font-bold">{SIGNUP_CONTENT.brandName}</span>
           </Link>
 
           {/* Main Content */}
           <div className="max-w-xl">
             <div className="inline-block bg-[#FF6900] text-white px-4 py-2 rounded-lg mb-6 uppercase tracking-wider text-sm">
-              Join EmberX
+              {SIGNUP_CONTENT.badge}
             </div>
             
             <h1 className="text-6xl xl:text-7xl font-bold leading-[0.9] mb-8 uppercase text-white">
-              discover
+              {SIGNUP_CONTENT.hero.titleLine1}
               <br />
-              <span className="text-[#FF6900]">rewards</span>
+              <span className="text-[#FF6900]">{SIGNUP_CONTENT.hero.titleLine2}</span>
               <br />
-              everywhere
+              {SIGNUP_CONTENT.hero.titleLine3}
             </h1>
             
             <p className="text-xl text-white/70 leading-relaxed max-w-lg">
-              Join over 1 million users discovering rewards, collecting brand tokens, 
-              and exploring their cities in a whole new way.
+              {SIGNUP_CONTENT.hero.description}
             </p>
           </div>
 
           {/* Bottom Features */}
           <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-[#FF6900] rounded-full flex items-center justify-center flex-shrink-0">
-                <Check className="w-5 h-5 text-white" />
+            {SIGNUP_CONTENT.features.map((feature, index) => (
+              <div key={index} className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-[#FF6900] rounded-full flex items-center justify-center flex-shrink-0">
+                  <Check className="w-5 h-5 text-white" />
+                </div>
+                <span className="text-white/80">{feature}</span>
               </div>
-              <span className="text-white/80">Location-based rewards</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-[#FF6900] rounded-full flex items-center justify-center flex-shrink-0">
-                <Check className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-white/80">Auto-collect within 8 meters</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-[#FF6900] rounded-full flex items-center justify-center flex-shrink-0">
-                <Check className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-white/80">Privacy-focused experience</span>
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -150,20 +139,20 @@ export default function SignUpPage() {
                 </svg>
               </div>
             </Link>
-            <h1 className="text-2xl font-bold text-zinc-900 dark:text-white">Join EmberX</h1>
-            <p className="text-zinc-600 dark:text-zinc-400 mt-1">Start earning rewards today</p>
+            <h1 className="text-2xl font-bold text-zinc-900 dark:text-white">{SIGNUP_CONTENT.mobileTitle}</h1>
+            <p className="text-zinc-600 dark:text-zinc-400 mt-1">{SIGNUP_CONTENT.mobileSubtitle}</p>
           </div>
 
           <div className="hidden lg:block mb-8">
-            <h2 className="text-4xl font-bold text-zinc-900 dark:text-white mb-2">Create Account</h2>
-            <p className="text-zinc-600 dark:text-zinc-400">Sign up to start your reward journey</p>
+            <h2 className="text-4xl font-bold text-zinc-900 dark:text-white mb-2">{SIGNUP_CONTENT.desktopTitle}</h2>
+            <p className="text-zinc-600 dark:text-zinc-400">{SIGNUP_CONTENT.desktopSubtitle}</p>
           </div>
 
           {/* Signup Form */}
           <ScrollArea className="h-full max-h-[calc(100vh-200px)]">
             <form onSubmit={handleSubmit} className="space-y-4 pr-4">
               <div className="space-y-2">
-                <Label htmlFor="username" className="text-zinc-900 dark:text-white">Username</Label>
+                <Label htmlFor="username" className="text-zinc-900 dark:text-white">{SIGNUP_CONTENT.form.usernameLabel}</Label>
                 <Input
                   id="username"
                   type="text"
@@ -175,47 +164,47 @@ export default function SignUpPage() {
                     }
                     setUsername(value);
                   }}
-                  placeholder="@yourusername"
+                  placeholder={SIGNUP_CONTENT.form.usernamePlaceholder}
                   className="h-12 bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800"
                   disabled={isLoading}
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-zinc-900 dark:text-white">Email</Label>
+                <Label htmlFor="email" className="text-zinc-900 dark:text-white">{SIGNUP_CONTENT.form.emailLabel}</Label>
                 <Input
                   id="email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
+                  placeholder={SIGNUP_CONTENT.form.emailPlaceholder}
                   className="h-12 bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800"
                   disabled={isLoading}
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="mobile" className="text-zinc-900 dark:text-white">Mobile Number</Label>
+                <Label htmlFor="mobile" className="text-zinc-900 dark:text-white">{SIGNUP_CONTENT.form.mobileLabel}</Label>
                 <Input
                   id="mobile"
                   type="tel"
                   value={mobile}
                   onChange={(e) => setMobile(e.target.value)}
-                  placeholder="Enter your mobile number"
+                  placeholder={SIGNUP_CONTENT.form.mobilePlaceholder}
                   className="h-12 bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800"
                   disabled={isLoading}
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password" className="text-zinc-900 dark:text-white">Password</Label>
+                <Label htmlFor="password" className="text-zinc-900 dark:text-white">{SIGNUP_CONTENT.form.passwordLabel}</Label>
                 <div className="relative">
                   <Input
                     id="password"
                     type={showPassword ? 'text' : 'password'}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Create a password"
+                    placeholder={SIGNUP_CONTENT.form.passwordPlaceholder}
                     className="h-12 pr-10 bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800"
                     disabled={isLoading}
                   />
@@ -249,14 +238,14 @@ export default function SignUpPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="confirmPassword" className="text-zinc-900 dark:text-white">Confirm Password</Label>
+                <Label htmlFor="confirmPassword" className="text-zinc-900 dark:text-white">{SIGNUP_CONTENT.form.confirmPasswordLabel}</Label>
                 <div className="relative">
                   <Input
                     id="confirmPassword"
                     type={showConfirmPassword ? 'text' : 'password'}
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    placeholder="Confirm your password"
+                    placeholder={SIGNUP_CONTENT.form.confirmPasswordPlaceholder}
                     className="h-12 pr-10 bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800"
                     disabled={isLoading}
                   />
@@ -283,13 +272,13 @@ export default function SignUpPage() {
                   />
                   <div className="flex-1 min-w-0">
                     <Label htmlFor="terms" className="text-sm leading-relaxed cursor-pointer block text-zinc-700 dark:text-zinc-300">
-                      I agree to the{' '}
+                      {SIGNUP_CONTENT.form.termsPrefix}{' '}
                       <Link href="/legal" className="text-[#FF6900] hover:text-[#E55A00] underline transition-colors inline-block">
-                        Terms of Service
+                        {SIGNUP_CONTENT.form.termsLink}
                       </Link>{' '}
-                      and{' '}
+                      {SIGNUP_CONTENT.form.termsAnd}{' '}
                       <Link href="/legal" className="text-[#FF6900] hover:text-[#E55A00] underline transition-colors inline-block">
-                        Privacy Policy
+                        {SIGNUP_CONTENT.form.privacyLink}
                       </Link>
                     </Label>
                   </div>
@@ -305,7 +294,7 @@ export default function SignUpPage() {
                   />
                   <div className="flex-1 min-w-0">
                     <Label htmlFor="marketing" className="text-sm leading-relaxed cursor-pointer block text-zinc-700 dark:text-zinc-300">
-                      I want to receive marketing emails about new features and deals
+                      {SIGNUP_CONTENT.form.marketingText}
                     </Label>
                   </div>
                 </div>
@@ -325,10 +314,10 @@ export default function SignUpPage() {
                 {isLoading ? (
                   <>
                     <Loader2 size={18} className="animate-spin mr-2" />
-                    Creating Account...
+                    {SIGNUP_CONTENT.form.loadingButton}
                   </>
                 ) : (
-                  'Create Account'
+                  SIGNUP_CONTENT.form.submitButton
                 )}
               </Button>
             </form>
@@ -337,12 +326,12 @@ export default function SignUpPage() {
           {/* Switch to Login */}
           <div className="text-center mt-6">
             <p className="text-zinc-600 dark:text-zinc-400">
-              Already have an account?{' '}
+              {SIGNUP_CONTENT.switch.message}{' '}
               <Link
                 href="/signin"
                 className="text-[#FF6900] hover:text-[#E55A00] font-medium transition-colors"
               >
-                Sign In
+                {SIGNUP_CONTENT.switch.link}
               </Link>
             </p>
           </div>
