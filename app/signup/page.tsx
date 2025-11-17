@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -85,45 +86,78 @@ export default function SignUpPage() {
         {/* Content Overlay */}
         <div className="relative z-10 flex flex-col justify-between p-12 w-full">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-[#FF6900] to-[#FF8533] rounded-xl flex items-center justify-center">
-              <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-            <span className="text-white text-xl font-bold">{SIGNUP_CONTENT.brandName}</span>
-          </Link>
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Link href="/" className="flex items-center gap-3">
+              <div className="w-12 h-12 bg-gradient-to-br from-[#FF6900] to-[#FF8533] rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentView" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <span className="text-white text-xl font-bold">{SIGNUP_CONTENT.brandName}</span>
+            </Link>
+          </motion.div>
 
           {/* Main Content */}
           <div className="max-w-xl">
-            <div className="inline-block bg-[#FF6900] text-white px-4 py-2 rounded-lg mb-6 uppercase tracking-wider text-sm">
-              {SIGNUP_CONTENT.badge}
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <div className="inline-block bg-[#FF6900] text-white px-4 py-2 rounded-lg mb-6 uppercase tracking-wider text-sm">
+                {SIGNUP_CONTENT.badge}
+              </div>
+            </motion.div>
             
-            <h1 className="text-6xl xl:text-7xl font-bold leading-[0.9] mb-8 uppercase text-white">
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="text-6xl xl:text-7xl font-bold leading-[0.9] mb-8 uppercase text-white"
+            >
               {SIGNUP_CONTENT.hero.titleLine1}
               <br />
               <span className="text-[#FF6900]">{SIGNUP_CONTENT.hero.titleLine2}</span>
               <br />
               {SIGNUP_CONTENT.hero.titleLine3}
-            </h1>
+            </motion.h1>
             
-            <p className="text-xl text-white/70 leading-relaxed max-w-lg">
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="text-xl text-white/70 leading-relaxed max-w-lg"
+            >
               {SIGNUP_CONTENT.hero.description}
-            </p>
+            </motion.p>
           </div>
 
           {/* Bottom Features */}
-          <div className="space-y-4">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="space-y-4"
+          >
             {SIGNUP_CONTENT.features.map((feature, index) => (
-              <div key={index} className="flex items-center gap-3">
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 1 + (index * 0.1), ease: [0.16, 1, 0.3, 1] }}
+                className="flex items-center gap-3"
+              >
                 <div className="w-8 h-8 bg-[#FF6900] rounded-full flex items-center justify-center flex-shrink-0">
                   <Check className="w-5 h-5 text-white" />
                 </div>
                 <span className="text-white/80">{feature}</span>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
 
@@ -131,7 +165,12 @@ export default function SignUpPage() {
       <div className="flex-1 flex items-center justify-center p-6 sm:p-12 bg-white dark:bg-zinc-950">
         <div className="w-full max-w-md">
           {/* Mobile Logo */}
-          <div className="lg:hidden text-center mb-8">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:hidden text-center mb-8"
+          >
             <Link href="/" className="inline-block">
               <div className="w-16 h-16 bg-gradient-to-br from-[#FF6900] to-[#FF8533] rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -141,16 +180,27 @@ export default function SignUpPage() {
             </Link>
             <h1 className="text-2xl font-bold text-zinc-900 dark:text-white">{SIGNUP_CONTENT.mobileTitle}</h1>
             <p className="text-zinc-600 dark:text-zinc-400 mt-1">{SIGNUP_CONTENT.mobileSubtitle}</p>
-          </div>
+          </motion.div>
 
-          <div className="hidden lg:block mb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="hidden lg:block mb-8"
+          >
             <h2 className="text-4xl font-bold text-zinc-900 dark:text-white mb-2">{SIGNUP_CONTENT.desktopTitle}</h2>
             <p className="text-zinc-600 dark:text-zinc-400">{SIGNUP_CONTENT.desktopSubtitle}</p>
-          </div>
+          </motion.div>
 
           {/* Signup Form */}
           <ScrollArea className="h-full max-h-[calc(100vh-200px)]">
-            <form onSubmit={handleSubmit} className="space-y-4 pr-4">
+            <motion.form
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              onSubmit={handleSubmit}
+              className="space-y-4 pr-4"
+            >
               <div className="space-y-2">
                 <Label htmlFor="username" className="text-zinc-900 dark:text-white">{SIGNUP_CONTENT.form.usernameLabel}</Label>
                 <Input
@@ -320,11 +370,16 @@ export default function SignUpPage() {
                   SIGNUP_CONTENT.form.submitButton
                 )}
               </Button>
-            </form>
+            </motion.form>
           </ScrollArea>
 
           {/* Switch to Login */}
-          <div className="text-center mt-6">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="text-center mt-6"
+          >
             <p className="text-zinc-600 dark:text-zinc-400">
               {SIGNUP_CONTENT.switch.message}{' '}
               <Link
@@ -334,7 +389,7 @@ export default function SignUpPage() {
                 {SIGNUP_CONTENT.switch.link}
               </Link>
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

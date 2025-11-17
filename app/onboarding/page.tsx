@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Zap } from 'lucide-react';
@@ -36,7 +37,12 @@ export default function OnboardingPage() {
     <div className="min-h-screen bg-gradient-to-br from-[#FF6900] via-[#FF8533] to-[#FFA166] flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8">
       <div className="w-full max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl">
         {/* Logo */}
-        <div className="text-center mb-8 sm:mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center mb-8 sm:mb-12"
+        >
           <Link href="/" className="inline-block">
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4 backdrop-blur-sm border border-white/30">
               <Zap className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
@@ -44,13 +50,21 @@ export default function OnboardingPage() {
           </Link>
           <h1 className="text-white text-2xl sm:text-3xl font-bold">{ONBOARDING_HEADER.logoText}</h1>
           <p className="text-white/90 text-base sm:text-lg mt-1">{ONBOARDING_HEADER.subtitle}</p>
-        </div>
+        </motion.div>
 
         {/* Progress Indicators */}
-        <div className="flex justify-center space-x-2 mb-6 sm:mb-8">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="flex justify-center space-x-2 mb-6 sm:mb-8"
+        >
           {ONBOARDING_STEPS.map((_, index) => (
-            <div
+            <motion.div
               key={index}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.3 + (index * 0.1), ease: [0.16, 1, 0.3, 1] }}
               className={`h-2 rounded-full transition-all duration-300 ${
                 index === currentStep
                   ? 'bg-white w-8'
@@ -60,48 +74,91 @@ export default function OnboardingPage() {
               }`}
             />
           ))}
-        </div>
+        </motion.div>
 
         {/* Content Card */}
-        <Card className="bg-white border-white/20 shadow-xl">
-          <CardContent className="p-6 sm:p-8 text-center">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#FF6900]/10 flex items-center justify-center mx-auto mb-6">
-              <IconComponent size={28} className="text-[#FF6900]" />
-            </div>
-            
-            <h2 className="text-gray-900 text-xl sm:text-2xl font-bold mb-3 sm:mb-4">{step.title}</h2>
-            <p className="text-gray-600 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">{step.description}</p>
-            
-            <div className="flex gap-3">
-              {currentStep > 0 && (
-                <Button
-                  variant="outline"
-                  onClick={prevStep}
-                  className="flex-1 border-[#FF6900]/30 text-[#FF6900] hover:bg-[#FF6900]/10"
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentStep}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -50 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Card className="bg-white border-white/20 shadow-xl">
+              <CardContent className="p-6 sm:p-8 text-center">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                  className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#FF6900]/10 flex items-center justify-center mx-auto mb-6"
                 >
-                  {ONBOARDING_BUTTONS.back}
-                </Button>
-              )}
-              <Button
-                onClick={nextStep}
-                className="flex-1 bg-[#FF6900] text-white hover:bg-[#E55A00]"
-              >
-                {currentStep === ONBOARDING_STEPS.length - 1 ? ONBOARDING_BUTTONS.getStarted : ONBOARDING_BUTTONS.next}
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+                  <IconComponent size={28} className="text-[#FF6900]" />
+                </motion.div>
+                
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  className="text-gray-900 text-xl sm:text-2xl font-bold mb-3 sm:mb-4"
+                >
+                  {step.title}
+                </motion.h2>
+                
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="text-gray-600 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8"
+                >
+                  {step.description}
+                </motion.p>
+                
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  className="flex gap-3"
+                >
+                  {currentStep > 0 && (
+                    <Button
+                      variant="outline"
+                      onClick={prevStep}
+                      className="flex-1 border-[#FF6900]/30 text-[#FF6900] hover:bg-[#FF6900]/10"
+                    >
+                      {ONBOARDING_BUTTONS.back}
+                    </Button>
+                  )}
+                  <Button
+                    onClick={nextStep}
+                    className="flex-1 bg-[#FF6900] text-white hover:bg-[#E55A00]"
+                  >
+                    {currentStep === ONBOARDING_STEPS.length - 1 ? ONBOARDING_BUTTONS.getStarted : ONBOARDING_BUTTONS.next}
+                  </Button>
+                </motion.div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </AnimatePresence>
 
         {/* Skip Option */}
-        <button
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
           onClick={skipOnboarding}
           className="w-full mt-4 sm:mt-6 text-white/80 hover:text-white text-sm transition-colors"
         >
           {ONBOARDING_BUTTONS.skip}
-        </button>
+        </motion.button>
 
         {/* Navigation Links */}
-        <div className="flex justify-center space-x-4 mt-6">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="flex justify-center space-x-4 mt-6"
+        >
           <Link
             href="/signin"
             className="text-white/80 hover:text-white text-sm transition-colors"
@@ -115,7 +172,7 @@ export default function OnboardingPage() {
           >
             {ONBOARDING_NAVIGATION.backToHome}
           </Link>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

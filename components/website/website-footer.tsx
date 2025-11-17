@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { Twitter, Linkedin, Instagram, Github, Mail, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { FOOTER } from '@/constants';
@@ -13,7 +16,13 @@ export function WebsiteFooter() {
         {/* Main Footer Content */}
         <div className="py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12">
           {/* Brand Section */}
-          <div className="lg:col-span-5">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5"
+          >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 bg-gradient-to-br from-[#FF6900] to-[#FF8533] rounded-xl flex items-center justify-center">
                 <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -42,12 +51,17 @@ export function WebsiteFooter() {
                 </Button>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Links Sections */}
           <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-8">
             {/* Product */}
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            >
               <h3 className="font-semibold mb-4 text-white">{FOOTER.sections.product.title}</h3>
               <ul className="space-y-3">
                 {FOOTER.sections.product.links.map((link, index) => (
@@ -58,10 +72,15 @@ export function WebsiteFooter() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
 
             {/* Company */}
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            >
               <h3 className="font-semibold mb-4 text-white">{FOOTER.sections.company.title}</h3>
               <ul className="space-y-3">
                 {FOOTER.sections.company.links.map((link, index) => (
@@ -72,10 +91,15 @@ export function WebsiteFooter() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
 
             {/* Resources */}
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            >
               <h3 className="font-semibold mb-4 text-white">{FOOTER.sections.resources.title}</h3>
               <ul className="space-y-3">
                 {FOOTER.sections.resources.links.map((link, index) => (
@@ -86,10 +110,15 @@ export function WebsiteFooter() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
 
             {/* Legal */}
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            >
               <h3 className="font-semibold mb-4 text-white">{FOOTER.sections.legal.title}</h3>
               <ul className="space-y-3">
                 {FOOTER.sections.legal.links.map((link, index) => (
@@ -100,12 +129,18 @@ export function WebsiteFooter() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="py-8 border-t border-white/10">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="py-8 border-t border-white/10"
+        >
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-zinc-400 text-sm">
               {FOOTER.copyright}
@@ -145,7 +180,7 @@ export function WebsiteFooter() {
               </a>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

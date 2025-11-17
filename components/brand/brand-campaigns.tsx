@@ -1,5 +1,6 @@
 "use client";
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Plus, Search, Filter, Target } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -37,7 +38,12 @@ export function BrandCampaigns({ brandName }: BrandCampaignsProps) {
   return (
     <div className="p-8 space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className="flex items-center justify-between"
+      >
         <div>
           <h3 className="text-xl font-bold text-foreground">{CAMPAIGNS_PAGE.header.title}</h3>
           <p className="text-sm text-muted-foreground">{CAMPAIGNS_PAGE.header.subtitle}</p>
@@ -46,10 +52,15 @@ export function BrandCampaigns({ brandName }: BrandCampaignsProps) {
           <Plus className="w-4 h-4 mr-2" />
           {CAMPAIGNS_PAGE.header.createButton}
         </Button>
-      </div>
+      </motion.div>
 
       {/* Search and Filters */}
-      <Card className="p-6 bg-card border-border">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <Card className="p-6 bg-card border-border">
         <div className="flex items-center gap-4">
           <div className="flex-1 relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -90,12 +101,18 @@ export function BrandCampaigns({ brandName }: BrandCampaignsProps) {
             </button>
           ))}
         </div>
-      </Card>
+        </Card>
+      </motion.div>
 
       {/* Campaign List */}
       <div className="grid gap-6">
         {filteredCampaigns.length === 0 ? (
-          <Card className="p-12 bg-card border-border">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Card className="p-12 bg-card border-border">
             <div className="text-center">
               <Target className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
               <h3 className="text-xl font-bold text-foreground mb-2">{CAMPAIGNS_PAGE.emptyState.title}</h3>
@@ -107,10 +124,18 @@ export function BrandCampaigns({ brandName }: BrandCampaignsProps) {
                 {CAMPAIGNS_PAGE.emptyState.createButton}
               </Button>
             </div>
-          </Card>
+            </Card>
+          </motion.div>
         ) : (
-          filteredCampaigns.map((campaign) => (
-            <CampaignCard key={campaign.id} campaign={campaign} />
+          filteredCampaigns.map((campaign, index) => (
+            <motion.div
+              key={campaign.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 + (index * 0.1), ease: [0.16, 1, 0.3, 1] }}
+            >
+              <CampaignCard campaign={campaign} />
+            </motion.div>
           ))
         )}
       </div>

@@ -1,6 +1,7 @@
 "use client"
 
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Users, Building2, ArrowRight, Check } from 'lucide-react';
 import { SIGNIN_SELECTION, AUTH_IMAGE_URL } from '@/constants';
@@ -20,7 +21,12 @@ export default function SignInSelectionPage() {
         </div>
 
         <div className="relative z-10 flex flex-col justify-center p-12 w-full">
-          <Link href="/" className="flex items-center gap-3 mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Link href="/" className="flex items-center gap-3 mb-12">
             <div className="w-12 h-12 bg-gradient-to-br from-[#FF6900] to-[#FF8533] rounded-xl flex items-center justify-center">
               <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -28,17 +34,28 @@ export default function SignInSelectionPage() {
             </div>
             <span className="text-white text-xl font-bold">{SIGNIN_SELECTION.brandName}</span>
           </Link>
+          </motion.div>
 
           <div className="max-w-xl">
-            <h1 className="text-6xl xl:text-7xl font-bold leading-[0.9] mb-8 uppercase text-white">
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="text-6xl xl:text-7xl font-bold leading-[0.9] mb-8 uppercase text-white"
+            >
               welcome<br />
               <span className="text-[#FF6900]">back</span> to<br />
               emberx
-            </h1>
+            </motion.h1>
             
-            <p className="text-xl text-white/70 leading-relaxed">
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="text-xl text-white/70 leading-relaxed"
+            >
               Choose your account type to continue and access your personalized dashboard.
-            </p>
+            </motion.p>
           </div>
         </div>
       </div>
@@ -47,7 +64,12 @@ export default function SignInSelectionPage() {
       <div className="flex-1 flex items-center justify-center p-6 sm:p-12 bg-white dark:bg-zinc-950">
         <div className="w-full max-w-2xl">
           {/* Mobile Logo */}
-          <div className="lg:hidden text-center mb-8">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:hidden text-center mb-8"
+          >
             <Link href="/" className="inline-block">
               <div className="w-16 h-16 bg-gradient-to-br from-[#FF6900] to-[#FF8533] rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -55,16 +77,27 @@ export default function SignInSelectionPage() {
                 </svg>
               </div>
             </Link>
-          </div>
+          </motion.div>
 
-          <div className="text-center mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="text-center mb-12"
+          >
             <h2 className="text-4xl font-bold text-zinc-900 dark:text-white mb-3">{SIGNIN_SELECTION.title}</h2>
             <p className="text-zinc-600 dark:text-zinc-400 text-lg">{SIGNIN_SELECTION.subtitle}</p>
-          </div>
+          </motion.div>
 
           <div className="grid md:grid-cols-2 gap-6">
             {/* User Sign In Card */}
-            <div className="group relative bg-zinc-50 dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-800 rounded-2xl p-8 hover:border-[#FF6900] transition-all duration-300 hover:shadow-xl">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="group relative bg-zinc-50 dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-800 rounded-2xl p-8 hover:border-[#FF6900] transition-[border-color,box-shadow] duration-300 hover:shadow-xl"
+              style={{ willChange: 'auto' }}
+            >
               <div className="flex flex-col h-full">
                 <div className="w-14 h-14 bg-[#FF6900]/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#FF6900] transition-colors">
                   <Users className="w-7 h-7 text-[#FF6900] group-hover:text-white transition-colors" />
@@ -94,10 +127,16 @@ export default function SignInSelectionPage() {
                   </Button>
                 </Link>
               </div>
-            </div>
+            </motion.div>
 
             {/* Brand Sign In Card */}
-            <div className="group relative bg-zinc-50 dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-800 rounded-2xl p-8 hover:border-[#FF6900] transition-all duration-300 hover:shadow-xl">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="group relative bg-zinc-50 dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-800 rounded-2xl p-8 hover:border-[#FF6900] transition-[border-color,box-shadow] duration-300 hover:shadow-xl"
+              style={{ willChange: 'auto' }}
+            >
               <div className="flex flex-col h-full">
                 <div className="w-14 h-14 bg-[#FF6900]/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#FF6900] transition-colors">
                   <Building2 className="w-7 h-7 text-[#FF6900] group-hover:text-white transition-colors" />
@@ -127,18 +166,23 @@ export default function SignInSelectionPage() {
                   </Button>
                 </Link>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Back to Home */}
-          <div className="text-center mt-8">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="text-center mt-8"
+          >
             <Link 
               href="/"
               className="text-zinc-600 dark:text-zinc-400 hover:text-[#FF6900] dark:hover:text-[#FF6900] transition-colors text-sm"
             >
               ← Back to Home
             </Link>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

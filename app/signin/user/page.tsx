@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -50,21 +51,38 @@ export default function UserSignInPage() {
         </div>
 
         <div className="relative z-10 flex flex-col justify-between p-12 w-full">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-[#FF6900] to-[#FF8533] rounded-xl flex items-center justify-center">
-              <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-            <span className="text-white text-xl font-bold">{USER_SIGNIN_CONTENT.brandName}</span>
-          </Link>
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Link href="/" className="flex items-center gap-3">
+              <div className="w-12 h-12 bg-gradient-to-br from-[#FF6900] to-[#FF8533] rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <span className="text-white text-xl font-bold">{USER_SIGNIN_CONTENT.brandName}</span>
+            </Link>
+          </motion.div>
 
           <div className="max-w-xl">
-            <div className="inline-block bg-[#FF6900] text-white px-4 py-2 rounded-lg mb-6 uppercase tracking-wider text-sm">
-              {USER_SIGNIN_CONTENT.welcomeBadge}
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <div className="inline-block bg-[#FF6900] text-white px-4 py-2 rounded-lg mb-6 uppercase tracking-wider text-sm">
+                {USER_SIGNIN_CONTENT.welcomeBadge}
+              </div>
+            </motion.div>
             
-            <h1 className="text-6xl xl:text-7xl font-bold leading-[0.9] mb-8 uppercase text-white">
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="text-6xl xl:text-7xl font-bold leading-[0.9] mb-8 uppercase text-white"
+            >
               {USER_SIGNIN_CONTENT.heroTitle.split('\n').map((line, i) => (
                 <span key={i}>
                   {line === USER_SIGNIN_CONTENT.heroHighlight ? (
@@ -75,28 +93,48 @@ export default function UserSignInPage() {
                   {i < USER_SIGNIN_CONTENT.heroTitle.split('\n').length - 1 && <br />}
                 </span>
               ))}
-            </h1>
+            </motion.h1>
             
-            <p className="text-xl text-white/70 leading-relaxed max-w-lg">
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="text-xl text-white/70 leading-relaxed max-w-lg"
+            >
               {USER_SIGNIN_CONTENT.heroDescription}
-            </p>
+            </motion.p>
           </div>
 
-          <div className="grid grid-cols-3 gap-6">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="grid grid-cols-3 gap-6"
+          >
             {AUTH_STATS.map((stat, index) => (
-              <div key={index}>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 1 + (index * 0.1), ease: [0.16, 1, 0.3, 1] }}
+              >
                 <div className="text-3xl font-bold text-[#FF6900] mb-1">{stat.value}</div>
                 <div className="text-white/60 text-sm uppercase tracking-wider">{stat.label}</div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
 
       {/* Right Side - Login Form */}
       <div className="flex-1 flex items-center justify-center p-6 sm:p-12 bg-white dark:bg-zinc-950">
         <div className="w-full max-w-md">
-          <div className="lg:hidden text-center mb-8">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:hidden text-center mb-8"
+          >
             <Link href="/" className="inline-block">
               <div className="w-16 h-16 bg-gradient-to-br from-[#FF6900] to-[#FF8533] rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -106,14 +144,25 @@ export default function UserSignInPage() {
             </Link>
             <h1 className="text-2xl font-bold text-zinc-900 dark:text-white">{USER_SIGNIN_CONTENT.mobileTitle}</h1>
             <p className="text-zinc-600 dark:text-zinc-400 mt-1">{USER_SIGNIN_CONTENT.mobileSubtitle}</p>
-          </div>
+          </motion.div>
 
-          <div className="hidden lg:block mb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="hidden lg:block mb-8"
+          >
             <h2 className="text-4xl font-bold text-zinc-900 dark:text-white mb-2">{USER_SIGNIN_CONTENT.desktopTitle}</h2>
             <p className="text-zinc-600 dark:text-zinc-400">{USER_SIGNIN_CONTENT.desktopSubtitle}</p>
-          </div>
+          </motion.div>
 
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <motion.form
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            onSubmit={handleSubmit}
+            className="space-y-5"
+          >
             <div className="space-y-2">
               <Label htmlFor="email" className="text-zinc-900 dark:text-white">{USER_SIGNIN_CONTENT.form.emailLabel}</Label>
               <Input
@@ -179,9 +228,14 @@ export default function UserSignInPage() {
                 USER_SIGNIN_CONTENT.form.submitButton
               )}
             </Button>
-          </form>
+          </motion.form>
 
-          <div className="space-y-4 mt-8">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="space-y-4 mt-8"
+          >
             <div className="text-center">
               <p className="text-zinc-600 dark:text-zinc-400">
                 {USER_SIGNIN_CONTENT.switch.message}{' '}
@@ -205,15 +259,20 @@ export default function UserSignInPage() {
                 </Link>
               </p>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="bg-zinc-50 dark:bg-zinc-900 rounded-xl p-4 mt-8">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="bg-zinc-50 dark:bg-zinc-900 rounded-xl p-4 mt-8"
+          >
             <p className="text-zinc-500 dark:text-zinc-400 text-xs text-center mb-2">{USER_SIGNIN_CONTENT.demo.title}</p>
             <p className="text-zinc-900 dark:text-white text-sm text-center">
               Email: {USER_SIGNIN_CONTENT.demo.email}<br />
               Password: {USER_SIGNIN_CONTENT.demo.password}
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

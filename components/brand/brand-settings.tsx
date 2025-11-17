@@ -1,5 +1,6 @@
 "use client";
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Building2,
   Bell,
@@ -59,31 +60,45 @@ export function BrandSettings({ brandName }: BrandSettingsProps) {
 
   return (
     <div className="p-8 space-y-6">
-      <Card className="p-2 bg-card border-border">
-        <div className="flex items-center gap-2">
-          {tabs.map((tab) => {
-            const Icon = tab.icon;
-            const isActive = activeTab === tab.id;
-            return (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg transition-all ${
-                  isActive
-                    ? 'bg-[#FF6900] text-white shadow-sm'
-                    : 'text-foreground hover:bg-accent'
-                }`}
-              >
-                <Icon className="w-4 h-4" />
-                <span className="font-medium">{tab.label}</span>
-              </button>
-            );
-          })}
-        </div>
-      </Card>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <Card className="p-2 bg-card border-border">
+          <div className="flex items-center gap-2">
+            {tabs.map((tab) => {
+              const Icon = tab.icon;
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg transition-all ${
+                    isActive
+                      ? 'bg-[#FF6900] text-white shadow-sm'
+                      : 'text-foreground hover:bg-accent'
+                  }`}
+                >
+                  <Icon className="w-4 h-4" />
+                  <span className="font-medium">{tab.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </Card>
+      </motion.div>
 
-      {activeTab === 'company' && (
-        <div className="space-y-6">
+      <AnimatePresence mode="wait">
+        {activeTab === 'company' && (
+          <motion.div
+            key="company"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="space-y-6"
+          >
           <div>
             <h3 className="text-xl font-bold text-foreground mb-1">{SETTINGS_PAGE.company.title}</h3>
             <p className="text-sm text-muted-foreground">{SETTINGS_PAGE.company.subtitle}</p>
@@ -181,11 +196,18 @@ export function BrandSettings({ brandName }: BrandSettingsProps) {
               {SETTINGS_PAGE.company.saveButton}
             </Button>
           </div>
-        </div>
-      )}
+          </motion.div>
+        )}
 
-      {activeTab === 'notifications' && (
-        <div className="space-y-6">
+        {activeTab === 'notifications' && (
+          <motion.div
+            key="notifications"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="space-y-6"
+          >
           <div>
             <h3 className="text-xl font-bold text-foreground mb-1">{SETTINGS_PAGE.notifications.title}</h3>
             <p className="text-sm text-muted-foreground">{SETTINGS_PAGE.notifications.subtitle}</p>
@@ -207,11 +229,18 @@ export function BrandSettings({ brandName }: BrandSettingsProps) {
               </Card>
             ))}
           </div>
-        </div>
-      )}
+          </motion.div>
+        )}
 
-      {activeTab === 'team' && (
-        <div className="space-y-6">
+        {activeTab === 'team' && (
+          <motion.div
+            key="team"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="space-y-6"
+          >
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-xl font-bold text-foreground mb-1">{SETTINGS_PAGE.team.title}</h3>
@@ -256,11 +285,18 @@ export function BrandSettings({ brandName }: BrandSettingsProps) {
               </Card>
             ))}
           </div>
-        </div>
-      )}
+          </motion.div>
+        )}
 
-      {activeTab === 'billing' && (
-        <div className="space-y-6">
+        {activeTab === 'billing' && (
+          <motion.div
+            key="billing"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="space-y-6"
+          >
           <div>
             <h3 className="text-xl font-bold text-foreground mb-1">{SETTINGS_PAGE.billing.title}</h3>
             <p className="text-sm text-muted-foreground">{SETTINGS_PAGE.billing.subtitle}</p>
@@ -317,8 +353,9 @@ export function BrandSettings({ brandName }: BrandSettingsProps) {
               </div>
             </Card>
           </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Users, DollarSign, Target, TrendingUp, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { StatCard } from './stat-card';
@@ -54,12 +55,24 @@ export function BrandDashboard({ brandName }: BrandDashboardProps) {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
         {stats.map((stat, index) => (
-          <StatCard key={index} {...stat} />
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <StatCard {...stat} />
+          </motion.div>
         ))}
       </div>
 
       {/* Campaigns Section */}
-      <div className="flex items-center justify-between">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        className="flex items-center justify-between"
+      >
         <div>
           <h3 className="text-xl font-bold text-foreground">{DASHBOARD_SECTION.title}</h3>
           <p className="text-sm text-muted-foreground">{DASHBOARD_SECTION.subtitle}</p>
@@ -68,12 +81,19 @@ export function BrandDashboard({ brandName }: BrandDashboardProps) {
           <Plus className="w-4 h-4 mr-2" />
           {DASHBOARD_SECTION.newCampaignButton}
         </Button>
-      </div>
+      </motion.div>
 
       {/* Campaign Cards */}
       <div className="grid gap-6">
-        {campaigns.map((campaign) => (
-          <CampaignCard key={campaign.id} campaign={campaign} />
+        {campaigns.map((campaign, index) => (
+          <motion.div
+            key={campaign.id}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 + (index * 0.1), ease: [0.16, 1, 0.3, 1] }}
+          >
+            <CampaignCard campaign={campaign} />
+          </motion.div>
         ))}
       </div>
     </div>
